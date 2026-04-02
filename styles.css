@@ -11,20 +11,20 @@ img {
 
 /* Page styling */
 body {
-    background-color: #333;
-    color: rgb(235, 235, 235);
+    background-color: #AFCBDB;
+    color: #D9D9D9;
     transition: all 2s;
 }
 
 body.switch {
-    background-color: rgb(235, 235, 235);
-    color: #333;
+    background-color:#0F172A;
+    color: #D9D9D9;
 }
 
 #container {
     position: relative;
     width: 100%;
-    max-width: 1366px;
+    max-width: 1100px;
     /* make sure the columns don't get too small and text stays readable */
     min-width: 900px;
     margin: 1em auto;
@@ -41,7 +41,7 @@ header {
     width: 1100px;
     height: 250px;
     margin: auto;
-    background-color: rgb(235, 235, 235);
+    /* background-color: #AFCBDB; */
     color: #333;
     overflow: hidden;
     display: grid;
@@ -49,9 +49,9 @@ header {
 }
 
 #banner.switch {
-    background-color: #333;
+    /* background-color: #0F172A; */
     color: rgb(235, 235, 235);
-    transition: all 2s;
+    transition: all 5s;
 }
 
 main {
@@ -65,6 +65,7 @@ main section {
     border: 1px rgb(235, 235, 235) dashed;
     margin: 0 .25em;
     padding: 1em;
+    background-color: #254E35 ;
 }
 
 a {
@@ -85,16 +86,19 @@ section a {
     line-height: 1.1em;
     display: inline-block;
     padding: .5em;
-    color: orange;
+    color: #D9D9D9;
 }
 
+main section.switch  {
+background-color: #35336B;
+}
 section a:hover {
     background-color: orange;
     color: #333;
 }
 
 section.switch a {
-    color: #333;
+    color: rgb(235, 235, 235);
 }
 
 section.switch a:hover {
@@ -125,4 +129,8 @@ button.switch {
 button.switch:hover {
     background-color: #333;
     color: rgb(235, 235, 235)
+}
+
+@media only screen and (min-width: 650px) {
+    
 }
