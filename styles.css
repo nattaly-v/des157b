@@ -1,7 +1,9 @@
-/* CSS Resets */
 * {
     box-sizing: border-box;
 }
+
+
+/* ---------------------------- Image Setup ---------------------------- */
 
 img {
     max-width: 100%;
@@ -9,52 +11,69 @@ img {
     height: auto;
 }
 
-h3{
-    background-color:#363129 ;
-}
+/* ----------------------------Page styling ----------------------------*/
 
-/* Page styling */
 body {
     background-color: #AFCBDB;
     color: #D9D9D9;
-    transition: all 2s;
     margin: 0;
     padding: 0;
 }
 
 body.switch {
-    background-color:#0F172A;
+    background-color: #0F172A;
 }
 
 #container {
-    width: 95%; /* Use percentage for responsiveness */
-    max-width: 1100px;
+    width: 95%;
+    max-width: 1200px;
     margin: 1em auto;
+    min-height: 750px;
 }
 
 header {
-    margin: 0 auto 2em auto;
+    margin: 0 0 2em 0;
 }
 
-#banner {
+h3 {
+    background-color: #363129;
+    height: 40px;
     text-align: center;
-    color: #333;
-    padding: 2em 1em;
+    padding: 10px;
+    font-family: Inter;
+    font-weight: bold;
+
+}
+
+section.switch h3 {
+    background-color: #E7BB67;
+    color: #0F172A;
+}
+
+
+#banner {
+    width: 100%;
+}
+
+#banner img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 #banner.switch {
     color: rgb(235, 235, 235);
 }
 
-/* MOBILE DEFAULT: Stack sections vertically */
+/* ---------------------------- Mobile Sections Format ---------------------------- */
+
 main {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 1em;
 }
 
 main section {
-    border: 1px rgb(235, 235, 235) dashed;
     padding: 1em;
     background-color: #254E35;
 }
@@ -63,25 +82,56 @@ main section.switch {
     background-color: #35336B;
 }
 
-/* Typography & Links */
-a { text-decoration: none; }
-nav ol, nav ul { list-style-type: none; padding: 0; margin: 0; }
+/* ---------------------------- Text & Links ----------------------------  */
+
+a {
+    text-decoration: none;
+}
+
+nav ol,
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
 section a {
     line-height: 1.5em;
     display: block;
-    padding: .5em;
+    padding: 5px;
     color: #D9D9D9;
+    text-align: center;
+    background-color:#608567 ;
+    font-family: Inter;
+    font-weight:normal;
 }
 
 section a:hover {
-    background-color: orange;
-    color: #333;
+    background-color: #173020;
+    color: #D9D9D9;
 }
 
-/* DESKTOP VIEW: Screen widths 600px and larger */
-@media only screen and (min-width: 600px) {
+section.switch a {
+    color: #070b13;
+    background-color: #6A71A5;
+}
+
+section.switch a:hover {
+    color: #35336B;
+    background-color: #D9D9D9;
+}
+
+
+/* ---------------------------- DESKTOP VIEW ---------------------------- */
+
+@media only screen and (min-width: 601px) {
+    #banner img {
+        height: auto;
+        width: 100%;
+    }
+
     main {
-        flex-direction: row; /* Switch from vertical to horizontal */
+        flex-direction: row;
         justify-content: space-evenly;
         align-items: stretch;
     }
@@ -90,26 +140,29 @@ section a:hover {
         flex: 1;
         margin: 0 .25em;
     }
-
-    #banner {
-        height: 250px;
-        display: grid;
-        place-items: center;
-    }
 }
 
-/* Button Styling */
+/* ---------------------------- Button Styling ---------------------------- */
+
 button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed;
+    top: 45px;
+    left: 203px; /*left side (day/sun) */
     padding: 12px;
+    border-radius: 100%;
     background-color: orange;
     color: #333;
     border: 1px solid transparent;
     z-index: 10;
+    width: 65px;
+    height: 65px;
+    transition: left 2s, background-color 2s; /*  transition left and smooth slide */
+    cursor: pointer;
+    font-size: 30px;
 }
 
 button.switch {
+    left: calc(100% - 268px); /* nightslides to right side (moon) */
     background-color: rgb(235, 235, 235);
+
 }
