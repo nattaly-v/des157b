@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockbuster Video</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<!------------------- Video Sources ------------------->
+    <main>
+        <section class="video-section">
+
+            <video id="main-video" autoplay muted playsinline>
+                <source src="media/office-work.webm" type="video/webm">
+                <source src="media/office-work.mp4" type="video/mp4">
+
+                <p> Your browser doesn't support HTML video.
+                    Here is a <a href="media/office-work.mp4">link to the video</a> instead.
+                </p>
+            </video>
+
+<!------------------- Floating text card overlaid on the video -------------------> 
+
+            <article class="text-card" id="text-card-1">
+                <p class="card-text">the days are long,</p>
+            </article>
+
+            <article class="text-card" id="text-card-2">
+                <p class="card-text">and the work never ends.</p>
+            </article>
+
+            <article class="text-card" id="text-card-3">
+                <p class="card-text">but still, you show up.</p>
+            </article>
+
+            <article class="text-card" id="text-card-4">
+                <p class="card-text">quietly. again and again.</p>
+            </article>
+
+            <article class="text-card" id="text-card-5">
+                <p class="card-text">that is enough.<br>- Gretchen Rubin</p>
+            </article>
+        </section>
+    </main>
+
+<!------------------- Footer ------------------->
+    <footer>
+        <p class="credit-name">Nattaly Vargas Sanchez - DES 1578 - Spring 2026</p>
+    </footer>
+
+</body>
+
+</html>
