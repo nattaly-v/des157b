@@ -65,6 +65,22 @@ section.switch h3 {
     color: rgb(235, 235, 235);
 }
 
+/* ---------------------------- Mobile Sections Format ---------------------------- */
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+main section {
+    padding: 1em;
+    background-color: #254E35;
+}
+
+main section.switch {
+    background-color: #35336B;
+}
 
 /* ---------------------------- Text & Links ----------------------------  */
 
@@ -106,6 +122,25 @@ section.switch a:hover {
 }
 
 
+/* ---------------------------- DESKTOP VIEW ---------------------------- */
+
+@media only screen and (min-width: 601px) {
+    #banner img {
+        height: auto;
+        width: 100%;
+    }
+
+    main {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+
+    main section {
+        flex: 1;
+        margin: 0 .25em;
+    }
+}
 
 /* ---------------------------- Button Styling ---------------------------- */
 
