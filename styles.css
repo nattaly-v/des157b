@@ -106,25 +106,6 @@ section.switch a:hover {
 }
 
 
-/* ---------------------------- DESKTOP VIEW ---------------------------- */
-
-@media only screen and (min-width: 601px) {
-    #banner img {
-        height: auto;
-        width: 100%;
-    }
-
-    main {
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: stretch;
-    }
-
-    main section {
-        flex: 1;
-        margin: 0 .25em;
-    }
-}
 
 /* ---------------------------- Button Styling ---------------------------- */
 
