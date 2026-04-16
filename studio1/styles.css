@@ -9,7 +9,7 @@ body {
     padding: 0;
     background: #0e0e0e;
     color: #f0ece4;
-    font-family: 'Karla', Helvetica, sans-serif;
+    font-family: 'Helvetica, sans-serif';
     font-weight: 300;
     min-height: 100vh;
     display: flex;
@@ -33,7 +33,7 @@ body {
 }
 
 #loader img {
-    width: 1200px; /* adjust to whatever size looks good */
+    width: 1200px; 
     height: 750px;
 }
 
@@ -147,7 +147,6 @@ main {
     left: 38.4%;
     width: 398px;
     scale: 4;
-    /* background: #9fa4ff; */
     color: #9fa4ff;
     padding: 1.4rem 1.6rem;
     transform: rotate(-2.5deg);
