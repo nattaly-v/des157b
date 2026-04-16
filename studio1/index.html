@@ -9,59 +9,77 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
-    
+
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-<!------------------- Video Sources ------------------->
+    <!------------------- Video ------------------->
+
     <main>
         <section class="video-section">
 
-            <video id="main-video" autoplay muted playsinline>
+            <div id="loader">
+                <img src="images/loader.gif" alt="loading">
+            </div>
+
+            <video id="main-video"  autoplay muted playsinline>
+
                 <source src="media/office-work.webm" type="video/webm">
                 <source src="media/office-work.mp4" type="video/mp4">
-
-                <p> Your browser doesn't support HTML video.
+                <p>Your browser doesn't support HTML video.
                     Here is a <a href="media/office-work.mp4">link to the video</a> instead.
                 </p>
             </video>
 
-<!------------------- Floating text card overlaid on the video -------------------> 
+            <!------------------- Text cards ------------------->
 
-            <article class="text-card" id="text-card-1">
+            <article class="text-card hidden" id="text-card-1">
                 <p class="card-text">The days are long,</p>
             </article>
 
-            <article class="text-card" id="text-card-2">
+            <article class="text-card hidden" id="text-card-2">
                 <p class="card-text">and the work never ends.</p>
             </article>
 
-            <article class="text-card" id="text-card-3">
+            <article class="text-card hidden" id="text-card-3">
                 <p class="card-text">But still, you show up.</p>
             </article>
 
-            <article class="text-card" id="text-card-4">
+            <article class="text-card hidden" id="text-card-4">
                 <p class="card-text">Quietly. Again and again.</p>
             </article>
 
-            <article class="text-card" id="text-card-5">
+            <article class="text-card hidden" id="text-card-5">
                 <p class="card-text">That is enough.</p>
             </article>
-            <article class="text-card" id="text-card-6">
-                <p class="card-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, debitis qui. Necessitatibus, quisquam deleniti? Corrupti voluptatem id excepturi quod nesciunt eos eius deleniti, nulla soluta dignissimos facere, cumque numquam facilis.</p>
+
+            <article class="text-card hidden" id="text-card-6">
+                <p class="card-text">Quote by: Gretchen Rubin</p>
             </article>
-            <article class="text-card" id="text-card-7">
-                <p class="card-text">Nattaly Vargas Sanchez<br> Quote by: Gretchen Rubin</p>
+
+            <article class="text-card hidden" id="text-card-7">
+                <p class="card-text">Click Here! <br> You showed up. You deserve a playlist.</p>
             </article>
+
+            <!------------------- Images ------------------->
+
+            <img id="img-card-5" src="images/again-1.svg" alt="the word again" class="hidden">
+            <img id="img-card-6" src="images/again-2.svg" alt="the word again" class="hidden">
+            <img id="img-card-7" src="images/again-3.svg" alt="the word again" class="hidden">
+            <img id="img-card-8" src="images/again-4.svg" alt="the word again" class="hidden">
+            <img id="img-card-9" src="images/again-5.svg" alt="the word again" class="hidden">
+            <img id="img-card-10" src="images/again-6.svg" alt="the word again" class="hidden">
+            <img id="img-card-11" src="images/again-7.svg" alt="the word again" class="hidden">
         </section>
     </main>
 
-<!------------------- Footer ------------------->
+    <!------------------- Footer ------------------->
     <footer>
         <p class="credit-name">Nattaly Vargas Sanchez - DES 1578 - Spring 2026</p>
     </footer>
