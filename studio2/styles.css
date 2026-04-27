@@ -20,7 +20,8 @@ body {
 
 header {
     text-align: center;
-    padding: 6rem 1rem 6rem;}
+    padding: 3rem 1rem 0.5rem;
+}
 
 header h1 {
     font-family: 'Bebas Neue';
@@ -314,4 +315,3 @@ main {
         transform: scale(1.03);
     }
 }
-
