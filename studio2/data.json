@@ -1,0 +1,123 @@
+{
+    "concerts": [
+        {
+            "id": 1,
+            "artist": "Stray Kids",
+            "tour": "Maniac World Tour",
+            "venue": "Oakland Arena",
+            "date": "July 12, 2022"
+        },
+        {
+            "id": 2,
+            "artist": "Stray Kids",
+            "tour": "Maniac World Tour (Encore)",
+            "venue": "BMO Stadium",
+            "date": "April 2, 2023"
+        },
+        {
+            "id": 3,
+            "artist": "Stray Kids",
+            "tour": "dominATE World Tour",
+            "venue": "Oracle Park",
+            "date": "May 28, 2025"
+        },
+        {
+            "id": 4,
+            "artist": "BTS",
+            "tour": "Love Yourself World Tour",
+            "venue": "Oakland Arena",
+            "date": "Sept 12, 2018"
+        },
+        {
+            "id": 5,
+            "artist": "BTS",
+            "tour": "Speak Yourself World Tour",
+            "venue": "Oakland Arena",
+            "date": "May 5, 2019"
+        },
+        {
+            "id": 6,
+            "artist": "BTS",
+            "tour": "Permission to Dance On Stage",
+            "venue": "SoFi Stadium",
+            "date": "Nov 27, 2021"
+        },
+        {
+            "id": 7,
+            "artist": "Agust D",
+            "tour": "D-Day Tour",
+            "venue": "Oakland Arena",
+            "date": "May 17, 2023"
+        },
+        {
+            "id": 8,
+            "artist": "j-hope",
+            "tour": "Hope on the Street Tour",
+            "venue": "Oakland Arena",
+            "date": "April 1, 2025"
+        },
+        {
+            "id": 9,
+            "artist": "P1Harmony",
+            "tour": "P1ustage H: P1oneer",
+            "venue": "Paramount Theatre",
+            "date": "Jan 22, 2023"
+        },
+        {
+            "id": 10,
+            "artist": "P1Harmony",
+            "tour": "P1ustage H: UTOP1A",
+            "venue": "Oakland Arena",
+            "date": "June 14, 2024"
+        },
+        {
+            "id": 11,
+            "artist": "ATEEZ",
+            "tour": "The Fellowship: Break the Wall",
+            "venue": "Oakland Arena",
+            "date": "Nov 5, 2022"
+        },
+        {
+            "id": 12,
+            "artist": "ATEEZ",
+            "tour": "The Fellowship: Break the Wall",
+            "venue": "Honda Center",
+            "date": "Nov 7, 2022"
+        },
+        {
+            "id": 13,
+            "artist": "ATEEZ",
+            "tour": "Towards the Light: Will to Power",
+            "venue": "Oakland Arena",
+            "date": "July 19, 2024"
+        },
+        {
+            "id": 14,
+            "artist": "ATEEZ",
+            "tour": "In Your Fantasy World Tour",
+            "venue": "SAP Center",
+            "date": "Aug 2, 2025"
+        },
+        {
+            "id": 15,
+            "artist": "ENHYPEN",
+            "tour": "Fate World Tour",
+            "venue": "Oakland Arena",
+            "date": "April 26, 2024"
+        },
+        {
+            "id": 16,
+            "artist": "KCON LA",
+            "tour": "KCON LA 2023",
+            "venue": "Crypto.com Arena",
+            "date": "Aug 18, 2023"
+        },
+        {
+            "id": 17,
+            "artist": "KCON LA",
+            "tour": "KCON LA 2023",
+            "venue": "Crypto.com Arena",
+            "date": "Aug 20, 2023"
+        }
+    ]
+}

@@ -2,316 +2,359 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
 }
+
 
 html,
 body {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-    font-family: 'Space Mono';
+   width: 100%;
+   min-height: 100vh;
+   background-color: #1a1a1a;
+   color: #f0f0f0;
+   font-family: 'Space Mono', monospace;
 }
 
-/* --------------------------- HEADER ---------------------------*/
 
+/*  ------------------------------- header ------------------------------- */
 header {
-    text-align: center;
-    padding: 3rem 1rem 0.5rem;
+   text-align: center;
+   padding: 2.5rem 1rem 1.5rem;
+}
+
+h1 {
+   margin: 0;
 }
 
 header h1 {
-    font-family: 'Bebas Neue';
-    font-size: 3.5rem;
-    letter-spacing: 0.08em;
-    color: #f0f0f0;
-    text-transform: lowercase;
+   font-family: 'Bebas Neue', sans-serif;
+   font-size: 3.5rem;
+   letter-spacing: 0.08em;
+   color: #f0f0f0;
+   text-transform: lowercase;
 }
+
 
 header .subtitle {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 0.4rem;
-    letter-spacing: 0.12em;
+   font-size: 0.75rem;
+   color: #888;
+   margin-top: 0.4rem;
+   letter-spacing: 0.12em;
 }
+
 
 /* --------------------------- EVERYTHING CDS ---------------------------*/
-
-/* cd wall grid */
 main {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 1rem 4rem;
+   display: flex;
+   justify-content: center;
+   padding: 2rem 1rem 4rem;
 }
+
 
 .cd-wall {
-    display: grid;
-    grid-template-columns: repeat(6, 140px);
-    gap: 2.5rem;
-    max-width: 1200px;
+   display: grid;
+   grid-template-columns: repeat(6, 140px);
+   gap: 2.5rem;
+   max-width: 1200px;
 }
 
-/* cd item */
+
 .cd-item {
-    width: 140px;
-    height: 140px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+   width: 140px;
+   height: 140px;
+   cursor: pointer;
+   transition: transform 0.2s ease;
 }
+
 
 .cd-item:hover {
-    transform: scale(1.12) translateY(-6px);
+   transform: scale(1.12) translateY(-6px);
 }
 
-/* cd item link */
-.cd-item a {
-    display: block;
-    width: 140px;
-    height: 140px;
-    text-decoration: none;
-}
 
-/* cd disc */
 .cd-disc {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   width: 140px;
+   height: 140px;
+   border-radius: 50%;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
-/* center hole on wall cds */
+
 .cd-hole {
-    position: absolute;
-    width: 22%;
-    height: 22%;
-    background: #1a1a1a;
-    border-radius: 50%;
-    z-index: 2;
+   position: absolute;
+   width: 22%;
+   height: 22%;
+   background: #1a1a1a;
+   border-radius: 50%;
+   z-index: 2;
 }
 
-/* cd gradient colors */
+
 .cd-1 {
-    background: conic-gradient(from 0deg, #1a6aff, #00c6ff, #1a6aff, #0050cc, #00c6ff, #1a6aff);
+   background: conic-gradient(from 0deg, #1a6aff, #00c6ff, #1a6aff, #0050cc, #00c6ff, #1a6aff);
 }
+
 
 .cd-2 {
-    background: conic-gradient(from 0deg, #5adb5a, #a8ff78, #5adb5a, #2ecc71, #a8ff78, #5adb5a);
+   background: conic-gradient(from 0deg, #5adb5a, #a8ff78, #5adb5a, #2ecc71, #a8ff78, #5adb5a);
 }
+
 
 .cd-3 {
-    background: conic-gradient(from 0deg, #7b2fff, #c77dff, #7b2fff, #5a189a, #c77dff, #7b2fff);
+   background: conic-gradient(from 0deg, #7b2fff, #c77dff, #7b2fff, #5a189a, #c77dff, #7b2fff);
 }
+
 
 .cd-4 {
-    background: conic-gradient(from 0deg, #ff4e4e, #ff9a3c, #ff4e4e, #cc0000, #ff9a3c, #ff4e4e);
+   background: conic-gradient(from 0deg, #ff4e4e, #ff9a3c, #ff4e4e, #cc0000, #ff9a3c, #ff4e4e);
 }
+
 
 .cd-5 {
-    background: conic-gradient(from 0deg, #a78bfa, #c4b5fd, #818cf8, #a78bfa, #c4b5fd, #818cf8);
+   background: conic-gradient(from 0deg, #a78bfa, #c4b5fd, #818cf8, #a78bfa, #c4b5fd, #818cf8);
 }
+
 
 .cd-6 {
-    background: conic-gradient(from 0deg, #ff6eb4, #ffb3d9, #ff6eb4, #e91e8c, #ffb3d9, #ff6eb4);
+   background: conic-gradient(from 0deg, #ff6eb4, #ffb3d9, #ff6eb4, #e91e8c, #ffb3d9, #ff6eb4);
 }
+
 
 .cd-7 {
-    background: conic-gradient(from 0deg, #cce8ff, #ffffff, #cce8ff, #a0cfee, #ffffff, #cce8ff);
+   background: conic-gradient(from 0deg, #cce8ff, #ffffff, #cce8ff, #a0cfee, #ffffff, #cce8ff);
 }
+
 
 .cd-8 {
-    background: conic-gradient(from 0deg, #ff6b6b, #ffc371, #ff6b6b, #e84393, #ffc371, #ff6b6b);
+   background: conic-gradient(from 0deg, #ff6b6b, #ffc371, #ff6b6b, #e84393, #ffc371, #ff6b6b);
 }
+
 
 .cd-9 {
-    background: conic-gradient(from 0deg, #00c9a7, #00e5ff, #00c9a7, #00897b, #00e5ff, #00c9a7);
+   background: conic-gradient(from 0deg, #00c9a7, #00e5ff, #00c9a7, #00897b, #00e5ff, #00c9a7);
 }
+
 
 .cd-10 {
-    background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+   background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
 }
+
 
 .cd-11 {
-    background: conic-gradient(from 0deg, #4776e6, #8e54e9, #4776e6, #2c3e9e, #8e54e9, #4776e6);
+   background: conic-gradient(from 0deg, #4776e6, #8e54e9, #4776e6, #2c3e9e, #8e54e9, #4776e6);
 }
+
 
 .cd-12 {
-    background: conic-gradient(from 0deg, #f7c948, #ffe566, #c8960c, #f7c948, #ffe566, #c8960c);
+   background: conic-gradient(from 0deg, #f7c948, #ffe566, #c8960c, #f7c948, #ffe566, #c8960c);
 }
+
 
 .cd-13 {
-    background: conic-gradient(from 0deg, #cd7f32, #e8a96a, #9c5a1d, #cd7f32, #e8a96a, #9c5a1d);
+   background: conic-gradient(from 0deg, #cd7f32, #e8a96a, #9c5a1d, #cd7f32, #e8a96a, #9c5a1d);
 }
+
 
 .cd-14 {
-    background: conic-gradient(from 0deg, #ff4500, #ff8c00, #ff4500, #cc2200, #ff8c00, #ff4500);
+   background: conic-gradient(from 0deg, #ff4500, #ff8c00, #ff4500, #cc2200, #ff8c00, #ff4500);
 }
+
 
 .cd-15 {
-    background: conic-gradient(from 0deg, #c0c0c0, #e8e8e8, #a0a0a0, #c0c0c0, #e8e8e8, #a0a0a0);
+   background: conic-gradient(from 0deg, #c0c0c0, #e8e8e8, #a0a0a0, #c0c0c0, #e8e8e8, #a0a0a0);
 }
+
 
 .cd-16 {
-    background: conic-gradient(from 0deg, #e8a0a0, #f4c2c2, #c97b7b, #e8a0a0, #f4c2c2, #c97b7b);
+   background: conic-gradient(from 0deg, #e8a0a0, #f4c2c2, #c97b7b, #e8a0a0, #f4c2c2, #c97b7b);
 }
 
+
 .cd-17 {
-    background: conic-gradient(from 0deg, #cc00cc, #ff66ff, #cc00cc, #990099, #ff66ff, #cc00cc);
+   background: conic-gradient(from 0deg, #cc00cc, #ff66ff, #cc00cc, #990099, #ff66ff, #cc00cc);
 }
+
 
 /* --------------------------- TARGET OVERLAY ---------------------------*/
 
-/* overlay — hidden by default */
 .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 100;
+   align-items: center;
+   justify-content: center;
 }
 
-/* shown when targeted */
-.overlay:target {
-    display: flex;
+
+.overlay.open {
+   display: flex;
 }
 
-/* dark backdrop — clicking it links to # which closes the overlay */
+
 .overlay-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(0, 0, 0, 0.75);
+   z-index: 0;
+   cursor: pointer;
 }
 
-/* close button :  clicking it links to # which closes the overlay*/
-.popup-close {
-    position: absolute;
-    top: -2.5rem;
-    right: -2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #f0f0f0;
-    font-size: 1.2rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
 
-/* ---------------------------  POP UP ---------------------------*/
-
-/* popup */
+/* ------------------------------- POP UP ------------------------------- */
 .popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-    z-index: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem;
+   position: relative;
+   z-index: 1;
 }
 
-/* popup cd wrap */
+
+.popup-close {
+   position: absolute;
+   top: -2.5rem;
+   right: -2.5rem;
+   background: none;
+   border: 1px solid rgba(255, 255, 255, 0.3);
+   color: #f0f0f0;
+   font-size: 1.2rem;
+   width: 2rem;
+   height: 2rem;
+   border-radius: 50%;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   transition: background 0.2s;
+}
+
+
+.popup-close:hover {
+   background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* container holds cd and ring, ring positions relative to this */
+.popup-cd-container {
+   position: relative;
+   width: 500px;
+   height: 500px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* popup cd clips video into circle */
 .popup-cd-wrap {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   width: 500px;
+   height: 500px;
+   border-radius: 50%;
+   overflow: hidden;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
-/* popup cd disc — spins */
-.popup-cd-disc {
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: spin 3s linear infinite;
+
+/* spinning video inside popup cd */
+.popup-video {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: 50%;
+   animation: spin 5.5s linear infinite;
 }
+
 
 /* center hole on popup cd */
 .popup-cd-hole {
-    position: absolute;
-    width: 20%;
-    height: 20%;
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 50%;
-    z-index: 2;
+   position: absolute;
+   width: 20%;
+   height: 20%;
+   background: rgba(0, 0, 0, 0.85);
+   border-radius: 50%;
+   z-index: 2;
 }
 
-/* glowing ring */
+
+/* glowing ring around popup cd */
 .popup-cd-ring {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border-radius: 50%;
-    border: 4px solid whitesmoke;
-    animation: ring-pulse 2s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 3;
+   position: absolute;
+   top: -8px;
+   left: -8px;
+   width: calc(100% + 16px);
+   height: calc(100% + 16px);
+   border-radius: 50%;
+   border: 4px solid #ffffff;
+   animation: ring-pulse 2s ease-in-out infinite;
+   pointer-events: none;
+   z-index: 3;
 }
 
 /* popup info text */
 .popup-info {
-    text-align: center;
+   text-align: center;
 }
+
 
 .popup-info h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.2rem;
-    letter-spacing: 0.08em;
-    color: #f0f0f0;
-    margin-bottom: 0.5rem;
+   font-family: 'Bebas Neue', sans-serif;
+   font-size: 2.2rem;
+   letter-spacing: 0.08em;
+   color: #f0f0f0;
+   margin-bottom: 0.5rem;
 }
 
+
 .popup-info p {
-    font-size: 0.75rem;
-    color: #888;
-    letter-spacing: 0.08em;
-    line-height: 1.8;
+   font-size: 0.75rem;
+   color: #ffffff;
+   letter-spacing: 0.08em;
+   line-height: 1.8;
 }
 
 /* --------------------------- ANIMATIONS ---------------------------*/
 
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
+   from {
+      transform: rotate(0deg);
+   }
 
-    to {
-        transform: rotate(360deg);
-    }
+
+   to {
+      transform: rotate(360deg);
+   }
 }
+
 
 @keyframes ring-pulse {
 
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
 
-    50% {
-        opacity: 0.6;
-        transform: scale(1.03);
-    }
+   0%,
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+
+
+   50% {
+      opacity: 0.6;
+      transform: scale(1.03);
+   }
 }
