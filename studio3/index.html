@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy Coffee Recipe Menu</title>
+
+  <!-- Normalize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600&family=Jost:wght@300;400&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HOME VIEW -->
+  <main id="home-view">
+    <header class="hero">
+      <div class="title-wrap">
+        <h1 class="site-title">COZY COFFEE</h1>
+      </div>
+      <p class="subtitle">recipe menu</p>
+    </header>
+
+    <section class="grid">
+
+      <article class="card" data-index="0" data-aos="fade-up" data-aos-delay="0">
+        <h2 class="card-name">Iced Matcha Latte</h2>
+        <div class="img-wrap">
+          <img src="images/matcha.png" alt="Iced Matcha Latte" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="1" data-aos="fade-up" data-aos-delay="80">
+        <h2 class="card-name">Dalgona Coffee</h2>
+        <div class="img-wrap">
+          <img src="images/dalgona.png" alt="Dalgona Coffee" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="2" data-aos="fade-up" data-aos-delay="160">
+        <h2 class="card-name">Espresso Tonic</h2>
+        <div class="img-wrap">
+          <img src="images/espresso-tonic.png" alt="Espresso Tonic" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="3" data-aos="fade-up" data-aos-delay="240">
+        <h2 class="card-name">Brown Sugar Shaken Espresso</h2>
+        <div class="img-wrap">
+          <img src="images/brown-sugar.png" alt="Brown Sugar Shaken Espresso" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="4" data-aos="fade-up" data-aos-delay="320">
+        <h2 class="card-name">Lavender Latte</h2>
+        <div class="img-wrap">
+          <img src="images/lavender.png" alt="Lavender Latte" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="5" data-aos="fade-up" data-aos-delay="420">
+        <h2 class="card-name">Strawberry Cold Foam Cold Brew</h2>
+        <div class="img-wrap">
+          <img src="images/strawberry.png" alt="Strawberry Cold Foam Cold Brew" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="6" data-aos="fade-up" data-aos-delay="480">
+        <h2 class="card-name">Vietnamese Iced Coffee</h2>
+        <div class="img-wrap">
+          <img src="images/vietnamese.png" alt="Vietnamese Iced Coffee" class="card-img" />
+        </div>
+      </article>
+
+      <article class="card" data-index="7" data-aos="fade-up" data-aos-delay="560">
+        <h2 class="card-name">Hojicha Latte</h2>
+        <div class="img-wrap">
+          <img src="images/hojicha.png" alt="Hojicha Latte" class="card-img" />
+        </div>
+      </article>
+
+    </section>
+
+    <p class="hint">- click a card to see the recipe -</p>
+  </main>
+
+  <!-- RECIPE VIEW -->
+  <section id="recipe-view" class="hidden">
+    <div class="recipe-inner">
+      <button id="back-btn">back to menu</button>
+      <div id="recipe-counter">01 / 08</div>
+
+      <h2 id="recipe-title"></h2>
+
+      <div class="recipe-card-wrap">
+        <button class="arrow-btn" id="prev-btn">&#8249;</button>
+        <div class="recipe-card">
+          <div class="recipe-left">
+            <div class="recipe-img-wrap">
+              <img id="recipe-img" src="" alt="" />
+            </div>
+          </div>
+
+          <div class="recipe-right">
+            <div class="recipe-col">
+              <h3 class="col-heading">ingredients</h3>
+              <ul id="recipe-ingredients"></ul>
+            </div>
+            <div class="recipe-col">
+              <h3 class="col-heading">steps</h3>
+              <ol id="recipe-steps"></ol>
+            </div>
+          </div>
+        </div>
+        <button class="arrow-btn" id="next-btn">&#8250;</button>
+      </div>
+
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer>
+    <p>Libraries used:
+      <a href="https://michalsnik.github.io/aos/">AOS - Animate On Scroll</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://gsap.com/">GSAP - GreenSock Animation Platform</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>

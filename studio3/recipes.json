@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Iced Matcha Latte",
+    "img": "images/matcha.png",
+    "emoji": "🍵",
+    "ingredients": [
+      "1 tsp matcha powder",
+      "2 tbsp hot water",
+      "1 cup milk (any kind)",
+      "ice",
+      "sweetener (optional)"
+    ],
+    "steps": [
+      "Sift matcha powder into a small bowl.",
+      "Add hot water and whisk until smooth and frothy.",
+      "Fill a glass with ice.",
+      "Pour in milk.",
+      "Pour matcha concentrate over the milk.",
+      "Stir gently and enjoy!"
+    ]
+  },
+  {
+    "name": "Dalgona Coffee",
+    "img": "images/dalgona.png",
+    "emoji": "☕",
+    "ingredients": [
+      "2 tbsp instant coffee",
+      "2 tbsp sugar",
+      "2 tbsp hot water",
+      "1 cup milk (any kind)",
+      "ice"
+    ],
+    "steps": [
+      "Combine instant coffee, sugar, and hot water in a bowl.",
+      "Whip with a hand mixer or whisk until thick and fluffy.",
+      "Fill a glass with ice and milk.",
+      "Spoon the whipped coffee on top.",
+      "Stir before drinking. Enjoy!"
+    ]
+  },
+  {
+    "name": "Espresso Tonic",
+    "img": "images/espresso-tonic.png",
+    "emoji": "🍋",
+    "ingredients": [
+      "2 shots espresso",
+      "4-6 oz tonic water",
+      "ice",
+      "lemon slice (optional)"
+    ],
+    "steps": [
+      "Fill a glass with ice.",
+      "Pour in cold tonic water.",
+      "Slowly pour espresso over the top.",
+      "Add a lemon slice if desired.",
+      "Serve immediately and enjoy!"
+    ]
+  },
+  {
+    "name": "Brown Sugar Shaken Espresso",
+    "img": "images/brown-sugar.png",
+    "emoji": "🧊",
+    "ingredients": [
+      "2 shots espresso",
+      "2 tbsp brown sugar syrup",
+      "a splash of oat milk",
+      "ice"
+    ],
+    "steps": [
+      "Brew espresso and let cool slightly.",
+      "Add espresso and brown sugar syrup to a shaker with ice.",
+      "Shake well until chilled.",
+      "Pour into a glass over fresh ice.",
+      "Top with a splash of oat milk.",
+      "Stir and enjoy!"
+    ]
+  },
+  {
+    "name": "Lavender Latte",
+    "img": "images/lavender.png",
+    "emoji": "💜",
+    "ingredients": [
+      "1 cup milk (any kind)",
+      "1 shot espresso",
+      "1 tbsp lavender syrup",
+      "1/2 tsp dried lavender (optional)",
+      "ice (if iced)"
+    ],
+    "steps": [
+      "Make espresso and set aside.",
+      "Heat milk and lavender syrup until warm.",
+      "Froth the milk (or shake with ice for iced latte).",
+      "Pour espresso into cup.",
+      "Add milk and stir gently.",
+      "Enjoy!"
+    ]
+  },
+  {
+    "name": "Strawberry Cold Foam Cold Brew",
+    "img": "images/strawberry.png",
+    "emoji": "🍓",
+    "ingredients": [
+      "1 cup cold brew coffee",
+      "1/4 cup heavy cream",
+      "2 tbsp strawberry syrup",
+      "ice"
+    ],
+    "steps": [
+      "Fill a glass with ice.",
+      "Pour in cold brew coffee.",
+      "In a separate container, combine heavy cream and strawberry syrup.",
+      "Froth until soft peaks form.",
+      "Spoon strawberry cold foam over the coffee.",
+      "Sip through the foam and enjoy!"
+    ]
+  },
+  {
+    "name": "Vietnamese Iced Coffee",
+    "img": "images/vietnamese.png",
+    "emoji": "🫖",
+    "ingredients": [
+      "2 tbsp Vietnamese ground coffee",
+      "2 tbsp sweetened condensed milk",
+      "hot water",
+      "ice"
+    ],
+    "steps": [
+      "Add condensed milk to the bottom of a glass.",
+      "Place a Vietnamese phin filter on top.",
+      "Add ground coffee and press gently.",
+      "Pour hot water and let drip slowly.",
+      "Once fully dripped, fill glass with ice.",
+      "Stir vigorously and enjoy!"
+    ]
+  },
+  {
+    "name": "Hojicha Latte",
+    "img": "images/hojicha.png",
+    "emoji": "🍂",
+    "ingredients": [
+      "1 tsp hojicha powder",
+      "2 tbsp hot water",
+      "1 cup steamed milk",
+      "sweetener (optional)"
+    ],
+    "steps": [
+      "Whisk hojicha powder with hot water until smooth.",
+      "Steam or heat milk until warm and frothy.",
+      "Pour hojicha into a mug.",
+      "Add steamed milk and stir.",
+      "Sweeten to taste.",
+      "Enjoy the roasted, nutty flavor!"
+    ]
+  }
+]
