@@ -9,14 +9,18 @@
     <!-- Normalize CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
 
-    <!-- Google Fonts  -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
     <!-- Styles -->
     <link href="styles.css" rel="stylesheet">
-
 
     <!-- Script -->
     <script src="script.js" defer></script>
@@ -34,7 +38,10 @@
         <nav class="home-nav">
             <button class="nav-btn" onclick="showScreen('screen-learn')">Learn Immigration</button>
 
-            <button class="nav-btn" onclick="showScreen('screen-faq')">FAQ</button>
+            <!-- <button class="nav-btn" onclick="showScreen('screen-faq')">FAQ</button> -->
+
+            <button class="nav-btn" onclick="showScreen('screen-offices')">Offices Near Me</button>
+
         </nav>
         <button class="emergency-btn" onclick="showScreen('screen-emergency')">Emergency<br>Rights</button>
     </div>
@@ -44,12 +51,14 @@
         <div class="screen-header">
             <h2>Learn Immigration</h2>
         </div>
-
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." />
+            <span>🎤</span>
+        </div>
         <nav class="learn-nav">
             <button class="nav-btn" onclick="showScreen('screen-rights')">My Rights</button>
             <button class="nav-btn" onclick="showScreen('screen-visa')">Visa Information</button>
             <button class="nav-btn" onclick="showScreen('screen-green')">Green Card Information</button>
-            <button class="nav-btn" onclick="showScreen('screen-offices')">Offices Near Me</button>
         </nav>
 
         <button class="home-btn" onclick="showScreen('screen-home')"><i class="fa-solid fa-house"></i></button>
@@ -63,18 +72,22 @@
         <div class="screen-header">
             <h2>My Rights</h2>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search..." />
-            <span>🎤</span>
-        </div>
+
         <div class="carousel-container">
-            <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button>
+            <!-- <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button> -->
             <div class="carousel-slides">
+                <!-- <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button> -->
+
                 <div class="carousel-slide active" id="slide-0">
+                    <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button>
+
                     <div class="rights-icon"></div>
                     <h3>Lorem Ipsum</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua ut enim.</p>
+
+                    <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button>
+
                 </div>
                 <div class="carousel-slide" id="slide-1">
                     <div class="rights-icon"></div>
@@ -88,8 +101,10 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua ut enim.</p>
                 </div>
+                <!-- <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button> -->
+
             </div>
-            <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button>
+            <!-- <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button> -->
         </div>
         <div class="carousel-dots">
             <span class="dot active" onclick="goToSlide(0)"></span>
@@ -135,6 +150,13 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
                 </p>
             </div>
+
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
         </div>
         <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
                 style="color: rgb(255, 212, 59);"></i></button>
@@ -144,7 +166,7 @@
     <div class="screen" id="screen-student-visa">
         <div class="screen-header">
             <h2>Visa Information</h2>
-            <!-- <p class="screen-sub">Student Visas</p> -->
+            <p class="screen-sub">Student Visas</p>
         </div>
         <div class="content-body">
             <div class="visa-card">
@@ -191,8 +213,8 @@
     <!------------------------- GREEN CARDS ------------------------->
     <div class="screen" id="screen-green">
         <div class="screen-header">
-            <h>Types of Green Cards</h2>
-                <p class="screen-sub">Business &amp; Tourism Visas</p>
+            <h2>Types of Green Cards</h2>
+            <p class="screen-sub">Business &amp; Tourism Visas</p>
         </div>
         <div class="content-body">
             <div class="visa-card">
@@ -261,8 +283,8 @@
                     et dolore magna aliqua ut enim.</p>
             </div>
         </div>
-        <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
-                style="color: rgb(255, 212, 59);"></i></button>
+        <button class="home-btn" onclick="showScreen('screen-home')"><i class="fa-solid fa-house"></i></button>
+
     </div>
 
     <!------------------------- OFFICES NEAR ME ------------------------->
