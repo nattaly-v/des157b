@@ -18,25 +18,25 @@ body {
     background-color: #2d2d2d;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
     padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    max-width: 390px;
-    height: 844px;
+    font-family: 'Inter'
 }
 
 /* ----------------------- SCREEN ----------------------- */
 .screen {
     display: none;
-    width: 100%;
-    /* max-width: 390px;
-    min-height: 844px; */
+    width: 390px;
+    height: 844px;
     background-color: var(--navy);
     border-radius: 20px;
     padding: 20px;
     color: var(--white);
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    flex-shrink: 0;
 }
 
 .screen.active {
@@ -79,14 +79,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 45px;
-    margin: 0px 0px 0px -16px;
+    /* margin: 0px 0px 0px -16px; */
 }
 
 .learn-nav {
     display: flex;
     flex-direction: column;
     gap: 42px;
-    margin: 0px 0px 0px -16px;
+    /* margin: 0px 0px 0px -16px; */
 }
 
 .nav-btn {
@@ -178,14 +178,14 @@ body {
 /* ----------------------- BACK BUTTON ----------------------- */
 .back-btn {
     background-color: var(--orange);
-    color: var(--white);
+    color: var #ffffff (--white);
     border: none;
     border-radius: 50%;
     width: 36px;
     height: 36px;
     font-size: 22px;
     cursor: pointer;
-    flex-shrink: 0;
+    margin: auto;
 }
 
 /* ----------------------- CONTENT BODY ----------------------- */
