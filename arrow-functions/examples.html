@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions Examples</title>
+    <style>
+        html {
+            background-color: #efefef;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            line-height: 1.4em;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Arrow Function Examples</h1>
+    <p>This page shows the same function written three different ways: as a named function, a function expression, and
+        an arrow function. The example comes from the class arrow function slides.</p>
+    <script>
+
+        // -------------------- A Named Function --------------------
+
+        // function makeUpperCase(aString) {
+        //     return aString.toUpperCase();
+        // }
+
+        // -------------------- A Function Expression --------------------
+        // console.log(makeUpperCase("here is a string"));
+
+        // const makeUpperCase = function(aString){
+        //     return aString.toUpperCase();
+        // }
+
+        // -------------------- An Arrow Function --------------------
+        // const makeUpperCase = (aString) => {
+        //     return aString.toUpperCase();
+        // }
+        // console.log(makeUpperCase("here is a string"));
+
+        // -------------------- Remove the Parentheses --------------------
+        // const makeUpperCase = aString => {
+        //     return aString.toUpperCase();
+        // }
+        // console.log(makeUpperCase("here is a string"));
+
+        // -------------------- Remove the braces and return --------------------
+
+        // const makeUpperCase = aString => aString.toUpperCase();
+        // console.log(makeUpperCase("here is a string"));
+
+        // -------------------- Two Parameters --------------------
+        // const fullName = (fname, lname) => `${fname} ${lname}`;
+        // console.log(fullName('Jose', 'Gonzalez'));
+
+        // -------------------- No Parameters --------------------
+        // const fullName = () => {
+        //     const fname = "Maria";
+        //     const lname = "Sanchez";
+        //     return `${fname} ${lname}`;
+        // }
+
+        // console.log(fullName());
+
+        // -------------------- When to Use Arrow Functions --------------------
+        // const fruit = ["banana", "apple", "lemon", "kiwi"];
+        // const upperFruit = [];
+        // fruit.forEach(function (thisFruit) {
+        //     upperFruit.push(thisFruit.toUpperCase());
+        // });
+        // console.log(upperFruit)
+
+        // -------------------- When to Use Arrow Functions --------------------
+        // const fruit = ["banana", "apple", "lemon", "kiwi"];
+        // const upperFruit = [];
+        // fruit.forEach(thisFruit => {
+        //     upperFruit.push(thisFruit.toUpperCase());
+        // });
+        // console.log(upperFruit);
+
+        // -------------------- Constructor Function --------------------
+        // const employee = function (fname, lname, jobTitle) {
+        //     this.fname = fname;
+        //     this.lname = lname;
+        //     this.position = jobTitle;
+        //     this.fullName = function () {
+        //         return `${fname} ${lname}`;
+        //     }
+        // }
+        // const id1234 = new employee('Bob', 'Smith', 'Mechanic');
+        // console.log(id1234.fname);
+        // console.log(id1234.fullName());
+
+
+        // -------------------- Full Name Converted… --------------------
+        // const employee = function (fname, lname, jobTitle) {
+        //     this.fname = fname;
+        //     this.lname = lname;
+        //     this.position = jobTitle;
+        //     this.fullName = () => `${fname} ${lname}`;
+        // }
+        // const id1234 = new employee('Bob', 'Smith', 'Mechanic');
+        // console.log(id1234.fname);
+        // console.log(id1234.fullName());
+
+        // -------------------- ERROR - Constructor Converted --------------------
+        const employee = (fname, lname, jobTitle) => {
+            this.fname = fname;
+            this.lname = lname;
+            this.position = jobTitle;
+            this.fullName = () => `${fname} ${lname}`;
+        }
+        const id1234 = new employee('Bob', 'Smith', 'Mechanic');
+        console.log(id1234.fname);
+        console.log(id1234.fullName());
+    </script>
+
+
+</body>
+
+</html>

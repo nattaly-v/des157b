@@ -31,7 +31,7 @@
     <!------------------------- HOME ------------------------->
     <div class="screen active" id="screen-home">
         <div class="phone-header">
-            <span>🔊</span>
+            <i class="fa-solid fa-volume-high" style="color: rgb(255, 212, 59);"></i>
             <div class="status-icons"><span>EN</span><span>⚙️</span></div>
         </div>
         <h1 class="app-title">Home</h1>
@@ -72,21 +72,18 @@
         <div class="screen-header">
             <h2>My Rights</h2>
         </div>
+        <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button>
 
         <div class="carousel-container">
-            <!-- <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button> -->
             <div class="carousel-slides">
-                <!-- <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button> -->
 
                 <div class="carousel-slide active" id="slide-0">
-                    <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button>
 
                     <div class="rights-icon"></div>
                     <h3>Lorem Ipsum</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua ut enim.</p>
 
-                    <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button>
 
                 </div>
                 <div class="carousel-slide" id="slide-1">
@@ -96,15 +93,13 @@
                         labore et dolore magna aliqua ut enim.</p>
                 </div>
                 <div class="carousel-slide" id="slide-2">
-                    <div class="rights-icon">⚖️</div>
+                    <div class="rights-icon"></div>
                     <h3>Lorem Ipsum</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua ut enim.</p>
                 </div>
-                <!-- <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button> -->
-
             </div>
-            <!-- <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button> -->
+            <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button>
         </div>
         <div class="carousel-dots">
             <span class="dot active" onclick="goToSlide(0)"></span>
