@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Immigration</title>
+
+    <!-- Normalize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!------------------------- HOME ------------------------->
+    <div class="screen active" id="screen-home">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-home')"></i>
+            <div class="status-icons"><span>EN</span><span>⚙️</span></div>
+        </div>
+        <h1 class="app-title">Home</h1>
+        <nav class="home-nav">
+            <button class="nav-btn" onclick="showScreen('screen-learn')">Learn Immigration</button>
+            <!-- <button class="nav-btn" onclick="showScreen('screen-faq')">FAQ</button> -->
+            <button class="nav-btn" onclick="showScreen('screen-offices')">Offices Near Me</button>
+        </nav>
+        <button class="emergency-btn" onclick="showScreen('screen-emergency')">Emergency<br>Rights</button>
+    </div>
+
+    <!------------------------- LEARN IMMIGRATION ------------------------->
+    <div class="screen" id="screen-learn">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Learn Immigration</h2>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." />
+            <span>🎤</span>
+        </div>
+        <nav class="learn-nav">
+            <button class="nav-btn" onclick="showScreen('screen-rights')">My Rights</button>
+            <button class="nav-btn" onclick="showScreen('screen-visa')">Visa Information</button>
+            <button class="nav-btn" onclick="showScreen('screen-green')">Green Card Information</button>
+        </nav>
+        <button class="home-btn" onclick="showScreen('screen-home')"><i class="fa-solid fa-house"></i></button>
+    </div>
+
+    <!------------------------- MY RIGHTS ------------------------->
+    <div class="screen" id="screen-rights">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>My Rights</h2>
+        </div>
+        <div class="carousel-container">
+            <button class="carousel-arrow" onclick="changeSlide(-1)">&#8249;</button>
+            <div class="carousel-slides">
+                <div class="carousel-slide active" id="slide-0">
+                    <div class="rights-icon"></div>
+                    <h3>Lorem Ipsum</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua ut enim.</p>
+                </div>
+                <div class="carousel-slide" id="slide-1">
+                    <div class="rights-icon"></div>
+                    <h3>Lorem Ipsum</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua ut enim.</p>
+                </div>
+                <div class="carousel-slide" id="slide-2">
+                    <div class="rights-icon"></div>
+                    <h3>Lorem Ipsum</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua ut enim.</p>
+                </div>
+            </div>
+            <button class="carousel-arrow" onclick="changeSlide(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- VISA INFORMATION ------------------------->
+    <div class="screen" id="screen-visa">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Visa Information</h2>
+            <p class="screen-sub">Type of Visas</p>
+        </div>
+        <div class="visa-buttons">
+            <button class="visa-type-btn" onclick="showScreen('screen-work-visa')">Work Visas</button>
+            <button class="visa-type-btn" onclick="showScreen('screen-student-visa')">Student Visas</button>
+            <button class="visa-type-btn" onclick="showScreen('screen-tourist-visa')">Tourist / Business Visas</button>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- WORK VISAS ------------------------->
+    <div class="screen" id="screen-work-visa">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Visa Information</h2>
+            <p class="screen-sub">Work Visas</p>
+        </div>
+        <div class="content-body">
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- STUDENT VISAS ------------------------->
+    <div class="screen" id="screen-student-visa">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Visa Information</h2>
+            <p class="screen-sub">Student Visas</p>
+        </div>
+        <div class="content-body">
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- TOURIST / BUSINESS VISAS ------------------------->
+    <div class="screen" id="screen-tourist-visa">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Visa Information</h2>
+            <p class="screen-sub">Business &amp; Tourism Visas</p>
+        </div>
+        <div class="content-body">
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- GREEN CARDS ------------------------->
+    <div class="screen" id="screen-green">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Types of Green Cards</h2>
+            <p class="screen-sub">Permanent Residency Options</p>
+        </div>
+        <div class="content-body">
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+            <div class="visa-card">
+                <div class="visa-img-placeholder"></div>
+                <h3>Lorem Ipsum Visa</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- FAQ ------------------------->
+    <div class="screen" id="screen-faq">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>FAQ</h2>
+        </div>
+        <div class="content-body">
+            <div class="info-card">
+                <h3>Lorem ipsum dolor sit amet?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+            <div class="info-card">
+                <h3>Lorem ipsum dolor sit amet?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+            <div class="info-card">
+                <h3>Lorem ipsum dolor sit amet?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+    <!------------------------- EMERGENCY RIGHTS ------------------------->
+    <div class="screen" id="screen-emergency">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header emergency-header">
+            <h2>Emergency Rights</h2>
+        </div>
+        <div class="content-body">
+            <div class="emergency-card">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua ut enim.</p>
+            </div>
+            <div class="emergency-card">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua ut enim.</p>
+            </div>
+            <div class="emergency-card">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua ut enim.</p>
+            </div>
+        </div>
+        <button class="home-btn" onclick="showScreen('screen-home')"><i class="fa-solid fa-house"></i></button>
+    </div>
+
+    <!------------------------- OFFICES NEAR ME ------------------------->
+    <div class="screen" id="screen-offices">
+        <div class="phone-header">
+            <i class="fa-solid fa-volume-high speaker-icon" onclick="speak(this.closest('.screen').id)"></i>
+        </div>
+        <div class="screen-header">
+            <h2>Office Locator</h2>
+        </div>
+        <div class="content-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="locator-form">
+                <label for="location-input">Location</label>
+                <input type="text" id="location-input" placeholder="City, State or ZIP" />
+            </div>
+            <div class="map-placeholder">
+                <span>Map Placeholder</span>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
+    </div>
+
+</body>
+
+</html>
