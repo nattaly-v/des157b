@@ -121,6 +121,13 @@ function initHoverVoice() {
 }
 
 
+// ===================== USABILITY OVERLAY =====================
+function closeOverlay() {
+    const overlay = document.getElementById('usability-overlay');
+    if (overlay) overlay.classList.add('hidden');
+}
+
+
 // ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
     loadTranslations();

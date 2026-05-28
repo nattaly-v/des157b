@@ -548,6 +548,108 @@ body {
     }
 }
 
+/* ----------------------- USABILITY TEST OVERLAY ----------------------- */
+.overlay-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.overlay-backdrop.hidden {
+    display: none;
+}
+
+.overlay-card {
+    background: var(--navy);
+    border: 1px solid var(--dark-navy);
+    border-radius: 20px;
+    padding: 32px 28px 28px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.overlay-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--orange-light);
+    text-align: center;
+    margin: 0;
+}
+
+.overlay-intro {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.overlay-intro strong {
+    color: var(--white);
+}
+
+.overlay-tasks {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px 18px;
+}
+
+.overlay-tasks-label {
+    color: var(--yellow);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.overlay-task-list {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+}
+
+.overlay-task-list li {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.overlay-task-list li strong {
+    color: var(--white);
+}
+
+.overlay-close-btn {
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-top: 4px;
+}
+
+.overlay-close-btn:hover {
+    background-color: #e06c00;
+    transform: translateY(-2px);
+}
+
 .speaker-icon {
     font-size: 25px;
     color: rgb(255, 212, 59);

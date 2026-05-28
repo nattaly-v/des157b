@@ -26,6 +26,27 @@
 
 <body>
 
+    <!------------------------- USABILITY TEST OVERLAY ------------------------->
+    <div class="overlay-backdrop" id="usability-overlay">
+        <div class="overlay-card">
+            <h2 class="overlay-title">Welcome &amp; Thank You!</h2>
+            <p class="overlay-intro">
+                Hi! Thanks for helping test <strong>New Horizon</strong>, an app designed to help immigrants
+                understand their rights and navigate the U.S. immigration system.
+                Complete the tasks below!
+            </p>
+            <div class="overlay-tasks">
+                <p class="overlay-tasks-label">Your Tasks</p>
+                <ol class="overlay-task-list">
+                    <li>Find out what your rights are if ICE comes to your door.</li>
+                    <li>Look up information about the <strong>F-1 Student Visa</strong> and read its details page.</li>
+                    <li>Switch the app to <strong>Spanish</strong> and navigate to any section.</li>
+                </ol>
+            </div>
+            <button class="overlay-close-btn" onclick="closeOverlay()">Let's Start</button>
+        </div>
+    </div>
+
     <!------------------------- HOME ------------------------->
     <div class="screen active" id="screen-home">
         <div class="phone-header">
