@@ -24,21 +24,15 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* ----------------------- LANGUAGE TOGGLE (FIXED) ----------------------- */
+/* ----------------------- LANGUAGE TOGGLE ----------------------- */
 .lang-toggle-wrap {
-    position: fixed;
-    top: 16px;
-    right: 24px;
-    z-index: 9999;
     display: flex;
     align-items: center;
     gap: 6px;
     background: rgba(26, 58, 95, 0.92);
     border: 1px solid var(--dark-navy);
     border-radius: 20px;
-    padding: 6px 14px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    padding: 4px 12px;
 }
 
 .lang-btn {
@@ -190,28 +184,6 @@ body {
     cursor: pointer;
 }
 
-/* ----------------------- SEARCH BAR ----------------------- */
-.search-bar {
-    display: flex;
-    align-items: center;
-    background-color: var(--white);
-    border-radius: 8px;
-    padding: 12px 12px;
-    margin: 0 auto 0 auto;
-    width: 299px;
-    height: 46.362px;
-    gap: 8px;
-}
-
-.search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    color: #333;
-    background: transparent;
-}
-
 /* ----------------------- SCREEN HEADERS ----------------------- */
 .screen-header {
     margin: 24px 0px 24px 0;
@@ -235,10 +207,6 @@ body {
     font-size: 25px;
     color: var(--text-light);
     margin-top: 10px;
-}
-
-.emergency-header h2 {
-    color: #ff5252;
 }
 
 /* ----------------------- BACK BUTTON ----------------------- */
@@ -269,25 +237,6 @@ body {
     gap: 16px;
     overflow-y: auto;
     padding-bottom: 8px;
-}
-
-/* ----------------------- INFO CARDS ----------------------- */
-.info-card {
-    background-color: var(--dark-navy);
-    border-radius: 10px;
-    padding: 16px;
-}
-
-.info-card h3 {
-    color: var(--orange);
-    margin-bottom: 8px;
-    font-size: 16px;
-}
-
-.info-card p {
-    color: var(--text-light);
-    font-size: 14px;
-    line-height: 1.6;
 }
 
 /* ----------------------- CAROUSEL ----------------------- */
@@ -326,7 +275,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* Replaced Inline styles for Carousel Inner Icons */
 .rights-icon i {
     font-size: 48px;
     color: var(--orange-light);
@@ -421,10 +369,8 @@ body {
 .visa-card {
     background-color: var(--dark-navy);
     border-radius: 10px;
-    background-color: #2C5E94;
     width: 322.893px;
     height: 440px;
-    /* Expanded to accommodate the button layout */
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -468,17 +414,12 @@ body {
     padding: 10px 18px;
     font-size: 14px;
     font-weight: 600;
-
-    /* Base Style */
     background: #2C5E94;
     color: #FBBF24;
     border-radius: 50px;
-
-    /* Smoothly animates colors, shape, and shadow */
     transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-radius 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Hover: Turns gold, stretches to circular edge, text shifts to dark blue */
 .card-learn-btn:hover {
     background: #FBBF24;
     color: #1A3A5F;
@@ -508,40 +449,6 @@ body {
     line-height: 1.6;
 }
 
-/* ----------------------- OFFICE LOCATOR ----------------------- */
-.locator-form {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.locator-form label {
-    font-size: 14px;
-    color: var(--text-light);
-}
-
-.locator-form input {
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: none;
-    font-size: 15px;
-    outline: none;
-    color: #333;
-}
-
-.map-placeholder {
-    width: 100%;
-    height: 250px;
-    background-color: #2a4a6a;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    font-size: 16px;
-}
-
 /* ----------------------- SIMPLIFIED DETAIL INFO PAGES ----------------------- */
 .info-page {
     display: none;
@@ -555,13 +462,8 @@ body {
 .info-hero {
     text-align: center;
     margin-bottom: 20px;
-}
+} 
 
-.info-emoji {
-    font-size: 40px;
-    display: block;
-    margin-bottom: 8px;
-}
 
 .info-body {
     flex: 1;
@@ -644,14 +546,8 @@ body {
         border-radius: 0;
         max-width: 100%;
     }
-
-    .lang-toggle-wrap {
-        top: 8px;
-        right: 8px;
-    }
 }
 
-/* ----------------------- SPEAKER ICON ----------------------- */
 .speaker-icon {
     font-size: 25px;
     color: rgb(255, 212, 59);

@@ -7,37 +7,52 @@
     <title>New Horizon</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2 family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+
     <link href="styles.css" rel="stylesheet">
 
-    <!-- ResponsiveVoice — replace YOUR_KEY with your actual key -->
-    <!-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=4dliKfEf"></script> -->
+    <!-- Verified ResponsiveVoice SDK Key -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=4dliKfEf"></script>
 
     <script src="script.js" defer></script>
 </head>
 
 <body>
-
+    
     <!------------------------- HOME ------------------------->
     <div class="screen active" id="screen-home">
         <div class="phone-header">
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-home')"></i>
+            <div class="lang-toggle-wrap">
+                <button class="lang-btn active" data-lang="en" onclick="applyLanguage('en')">EN</button>
+                <span class="lang-divider">|</span>
+                <button class="lang-btn" data-lang="es" onclick="applyLanguage('es')">ES</button>
+            </div>
         </div>
-        <h1 class="app-title">New Horizon</h1>
+        <h1 class="app-title" data-key="title">New Horizon</h1>
         <nav class="home-nav">
-            <button class="nav-btn" data-read="Learn about immigration" onclick="showScreen('screen-learn')">Learn
+            <button class="nav-btn" data-read-en="Learn about immigration" data-read-es="Aprender sobre inmigración"
+                data-read="Learn about immigration" onclick="showScreen('screen-learn')" data-key="btn_learn">Learn
                 Immigration</button>
-            <button class="nav-btn" data-read="Find immigration offices near you"
-                onclick="showScreen('screen-offices')">Offices Near Me</button>
+
+            <button class="nav-btn" data-read-en="Find immigration offices near you"
+                data-read-es="Encuentre oficinas de inmigración cerca de usted"
+                data-read="Find immigration offices near you" onclick="showScreen('screen-offices')"
+                data-key="btn_offices">Offices Near Me</button>
         </nav>
-        <button class="emergency-btn" data-read="Emergency rights information"
-            onclick="showScreen('screen-emergency')">Emergency<br>Rights</button>
+
+        <button class="emergency-btn" data-read-en="Emergency rights information"
+            data-read-es="Información de derechos de de emergencia" data-read="Emergency rights information"
+            onclick="showScreen('screen-emergency')" data-key="btn_emergency">Emergency<br>Rights</button>
     </div>
+
 
     <!------------------------- LEARN IMMIGRATION ------------------------->
     <div class="screen" id="screen-learn">
@@ -45,18 +60,17 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-learn')"></i>
         </div>
         <div class="screen-header">
-            <h2>Learn Immigration</h2>
+            <h2 data-key="hdr_learn">Learn Immigration</h2>
         </div>
         <nav class="learn-nav">
-            <button class="nav-btn" data-read="View your basic legal rights" onclick="showScreen('screen-rights')">My
-                Rights</button>
-            <button class="nav-btn" data-read="Explore temporary visa information"
-                onclick="showScreen('screen-visa')">Visa Information</button>
+            <button class="nav-btn" data-read="View your basic legal rights" onclick="showScreen('screen-rights')"
+                data-key="btn_rights">My Rights</button>
+            <button class="nav-btn" data-read="Explore temporary visa information" onclick="showScreen('screen-visa')"
+                data-key="btn_visa">Visa Information</button>
             <button class="nav-btn" data-read="Explore permanent green card information"
-                onclick="showScreen('screen-green')">Green Card Information</button>
+                onclick="showScreen('screen-green')" data-key="btn_green">Green Card Information</button>
         </nav>
-        <button class="home-btn" data-read="Go back to the home screen" onclick="showScreen('screen-home')"><i
-                class="fa-solid fa-house"></i></button>
+        <button class="home-btn" data-read="Go back to the home screen" onclick="showScreen('screen-home')"><i class="fa-solid fa-house"></i></button>
     </div>
 
     <!------------------------- MY RIGHTS ------------------------->
@@ -65,7 +79,7 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-rights')"></i>
         </div>
         <div class="screen-header">
-            <h2>My Rights</h2>
+            <h2 data-key="hdr_rights">My Rights</h2>
         </div>
         <div class="carousel-container">
             <button class="carousel-arrow" data-read="Previous right" onclick="changeSlide(-1)">&#8249;</button>
@@ -73,22 +87,25 @@
 
                 <div class="carousel-slide active" id="slide-0">
                     <div class="rights-icon"><i class="fa-solid fa-microphone-slash"></i></div>
-                    <h3>Right to Remain Silent</h3>
-                    <p>You do not have to answer questions about your immigration status. Say: "I am exercising my right
+                    <h3 data-key="slide0_title">Right to Remain Silent</h3>
+                    <p data-key="slide0_body">You do not have to answer questions about your immigration status. Say: "I
+                        am exercising my right
                         to remain silent."</p>
                 </div>
 
                 <div class="carousel-slide" id="slide-1">
                     <div class="rights-icon"><i class="fa-solid fa-door-closed"></i></div>
-                    <h3>Right to Refuse Entry</h3>
-                    <p>Do not open the door for ICE unless they have a judicial warrant signed by a judge. Ask them to
+                    <h3 data-key="slide1_title">Right to Refuse Entry</h3>
+                    <p data-key="slide1_body">Do not open the door for ICE unless they have a judicial warrant signed by
+                        a judge. Ask them to
                         slide it under the door.</p>
                 </div>
 
                 <div class="carousel-slide" id="slide-2">
                     <div class="rights-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-                    <h3>Right to an Attorney</h3>
-                    <p>You have the right to speak with a lawyer before answering questions. Do not sign any documents
+                    <h3 data-key="slide2_title">Right to an Attorney</h3>
+                    <p data-key="slide2_body">You have the right to speak with a lawyer before answering questions. Do
+                        not sign any documents
                         without legal counsel.</p>
                 </div>
 
@@ -100,8 +117,9 @@
             <span class="dot" onclick="goToSlide(1)"></span>
             <span class="dot" onclick="goToSlide(2)"></span>
         </div>
-        <button class="back-btn" data-read="Return to the immigration menu" onclick="showScreen('screen-learn')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to the immigration menu"
+            onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- VISA INFORMATION ------------------------->
@@ -110,19 +128,20 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-visa')"></i>
         </div>
         <div class="screen-header">
-            <h2>Visa Information</h2>
-            <p class="screen-sub">Type of Visas</p>
+            <h2 data-key="hdr_visa">Visa Information</h2>
+            <p class="screen-sub" data-key="sub_visa">Type of Visas</p>
         </div>
         <div class="visa-buttons">
             <button class="visa-type-btn" data-read="View professional employment visas"
-                onclick="showScreen('screen-work-visa')">Work Visas</button>
+                onclick="showScreen('screen-work-visa')" data-key="btn_work">Work Visas</button>
             <button class="visa-type-btn" data-read="View international academic student visas"
-                onclick="showScreen('screen-student-visa')">Student Visas</button>
+                onclick="showScreen('screen-student-visa')" data-key="btn_student">Student Visas</button>
             <button class="visa-type-btn" data-read="View short term travel and tourism visas"
-                onclick="showScreen('screen-tourist-visa')">Tourist / Business Visas</button>
+                onclick="showScreen('screen-tourist-visa')" data-key="btn_tourist">Tourist / Business Visas</button>
         </div>
-        <button class="back-btn" data-read="Return to the immigration menu" onclick="showScreen('screen-learn')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to the immigration menu"
+            onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- WORK VISAS ------------------------->
@@ -131,40 +150,44 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-work-visa')"></i>
         </div>
         <div class="screen-header">
-            <h2>Visa Information</h2>
-            <p class="screen-sub">Work Visas</p>
+            <h2 data-key="hdr_visa">Visa Information</h2>
+            <p class="screen-sub" data-key="sub_work">Work Visas</p>
         </div>
         <div class="content-body">
             <div class="visa-card">
-                <h3>H-1B Visa</h3>
-                <p>For workers in specialty occupations like tech, engineering, and finance. Requires a U.S. employer
+                <h3 data-key="h1b_name">H-1B Visa</h3>
+                <p data-key="h1b_desc">For workers in specialty occupations like tech, engineering, and finance.
+                    Requires a U.S. employer
                     sponsor. Valid for 3 years, extendable to 6.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about H one B specialty occupation visas"
-                    onclick="showScreen('screen-h1b-details')">Learn More</button>
+                    onclick="showScreen('screen-h1b-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>H-2A Visa</h3>
-                <p>For temporary agricultural workers. Allows foreign nationals to work on U.S. farms during peak
+                <h3 data-key="h2a_name">H-2A Visa</h3>
+                <p data-key="h2a_desc">For temporary agricultural workers. Allows foreign nationals to work on U.S.
+                    farms during peak
                     seasons.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about H two A temporary agricultural visas"
-                    onclick="showScreen('screen-h2a-details')">Learn More</button>
+                    onclick="showScreen('screen-h2a-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>L-1 Visa</h3>
-                <p>For employees transferring within the same company from a foreign office to a U.S. office. Requires
+                <h3 data-key="l1_name">L-1 Visa</h3>
+                <p data-key="l1_desc">For employees transferring within the same company from a foreign office to a U.S.
+                    office. Requires
                     at least 1 year of employment.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about L one intracompany corporate transfer visas"
-                    onclick="showScreen('screen-l1-details')">Learn More</button>
+                    onclick="showScreen('screen-l1-details')" data-key="btn_more">Learn More</button>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to visa menu" onclick="showScreen('screen-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to visa menu"
+            onclick="showScreen('screen-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- STUDENT VISAS ------------------------->
@@ -173,38 +196,41 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-student-visa')"></i>
         </div>
         <div class="screen-header">
-            <h2>Visa Information</h2>
-            <p class="screen-sub">Student Visas</p>
+            <h2 data-key="hdr_visa">Visa Information</h2>
+            <p class="screen-sub" data-key="sub_student">Student Visas</p>
         </div>
         <div class="content-body">
             <div class="visa-card">
-                <h3>F-1 Visa</h3>
-                <p>For full-time academic students at accredited U.S. colleges or universities. Allows limited on-campus
+                <h3 data-key="f1_name">F-1 Visa</h3>
+                <p data-key="f1_desc">For full-time academic students at accredited U.S. colleges or universities.
+                    Allows limited on-campus
                     work and OPT after graduation.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn" data-read="Learn more about F one academic student visas"
-                    onclick="showScreen('screen-f1-details')">Learn More</button>
+                    onclick="showScreen('screen-f1-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>J-1 Visa</h3>
-                <p>For students, interns, scholars, or researchers in exchange programs.</p>
+                <h3 data-key="j1_name">J-1 Visa</h3>
+                <p data-key="j1_desc">For students, interns, scholars, or researchers in exchange programs.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about J one international exchange visitor visas"
-                    onclick="showScreen('screen-j1-details')">Learn More</button>
+                    onclick="showScreen('screen-j1-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>M-1 Visa</h3>
-                <p>For vocational and non-academic students. Covers trade schools, culinary programs, and flight
+                <h3 data-key="m1_name">M-1 Visa</h3>
+                <p data-key="m1_desc">For vocational and non-academic students. Covers trade schools, culinary programs,
+                    and flight
                     academies.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about M one trade school and vocational student visas"
-                    onclick="showScreen('screen-m1-details')">Learn More</button>
+                    onclick="showScreen('screen-m1-details')" data-key="btn_more">Learn More</button>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to visa menu" onclick="showScreen('screen-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to visa menu"
+            onclick="showScreen('screen-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- TOURIST / BUSINESS VISAS ------------------------->
@@ -213,40 +239,44 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-tourist-visa')"></i>
         </div>
         <div class="screen-header">
-            <h2>Visa Information</h2>
-            <p class="screen-sub">Business &amp; Tourism Visas</p>
+            <h2 data-key="hdr_visa">Visa Information</h2>
+            <p class="screen-sub" data-key="sub_tourist">Business &amp; Tourism Visas</p>
         </div>
         <div class="content-body">
             <div class="visa-card">
-                <h3>B-2 Tourist Visa</h3>
-                <p>For tourism, vacation, visiting family, or medical treatment. Typically allows a stay of up to 6
+                <h3 data-key="b2_name">B-2 Tourist Visa</h3>
+                <p data-key="b2_desc">For tourism, vacation, visiting family, or medical treatment. Typically allows a
+                    stay of up to 6
                     months.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about B two holiday and travel tourist visas"
-                    onclick="showScreen('screen-b2-details')">Learn More</button>
+                    onclick="showScreen('screen-b2-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>B-1 Business Visa</h3>
-                <p>For business visitors attending meetings or conferences. Does not allow you to work for a U.S.
+                <h3 data-key="b1_name">B-1 Business Visa</h3>
+                <p data-key="b1_desc">For business visitors attending meetings or conferences. Does not allow you to
+                    work for a U.S.
                     employer.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about B one corporate business travel visas"
-                    onclick="showScreen('screen-b1-details')">Learn More</button>
+                    onclick="showScreen('screen-b1-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>ESTA / Visa Waiver</h3>
-                <p>Citizens of 40+ countries can visit the U.S. for up to 90 days without a visa. Must apply online
+                <h3 data-key="esta_name">ESTA / Visa Waiver</h3>
+                <p data-key="esta_desc">Citizens of 40+ countries can visit the U.S. for up to 90 days without a visa.
+                    Must apply online
                     before travel.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about the E S T A international visa waiver program"
-                    onclick="showScreen('screen-esta-details')">Learn More</button>
+                    onclick="showScreen('screen-esta-details')" data-key="btn_more">Learn More</button>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to visa menu" onclick="showScreen('screen-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to visa menu"
+            onclick="showScreen('screen-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- GREEN CARDS ------------------------->
@@ -255,49 +285,54 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-green')"></i>
         </div>
         <div class="screen-header">
-            <h2>Types of Green Cards</h2>
-            <p class="screen-sub">Permanent Residency Options</p>
+            <h2 data-key="hdr_green">Types of Green Cards</h2>
+            <p class="screen-sub" data-key="sub_green">Permanent Residency Options</p>
         </div>
         <div class="content-body">
             <div class="visa-card">
-                <h3>Family-Based Green Card</h3>
-                <p>For immediate relatives of U.S. citizens including spouses, unmarried children under 21, and parents.
+                <h3 data-key="family_name">Family-Based Green Card</h3>
+                <p data-key="family_desc">For immediate relatives of U.S. citizens including spouses, unmarried children
+                    under 21, and parents.
                 </p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about family sponsorship green cards"
-                    onclick="showScreen('screen-family-green-details')">Learn More</button>
+                    onclick="showScreen('screen-family-green-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>Employment-Based Green Card</h3>
-                <p>For workers with job offers from U.S. employers. Divided into preference categories EB-1 through
+                <h3 data-key="workgc_name">Employment-Based Green Card</h3>
+                <p data-key="workgc_desc">For workers with job offers from U.S. employers. Divided into preference
+                    categories EB-1 through
                     EB-5.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about employment and skill based green cards"
-                    onclick="showScreen('screen-work-green-details')">Learn More</button>
+                    onclick="showScreen('screen-work-green-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>Refugee or Asylee Green Card</h3>
-                <p>Refugees and asylees who have been in the U.S. for at least one year may apply for permanent
+                <h3 data-key="refugee_name">Refugee or Asylee Green Card</h3>
+                <p data-key="refugee_desc">Refugees and asylees who have been in the U.S. for at least one year may
+                    apply for permanent
                     residency.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about humanitarian refugee and asylum green cards"
-                    onclick="showScreen('screen-refugee-details')">Learn More</button>
+                    onclick="showScreen('screen-refugee-details')" data-key="btn_more">Learn More</button>
             </div>
             <div class="visa-card">
-                <h3>Diversity Visa Lottery</h3>
-                <p>Each year 55,000 green cards are available through a random lottery to people from countries with low
+                <h3 data-key="lottery_name">Diversity Visa Lottery</h3>
+                <p data-key="lottery_desc">Each year 55,000 green cards are available through a random lottery to people
+                    from countries with low
                     U.S. immigration rates.</p>
                 <div class="visa-img-placeholder"></div>
                 <button class="learn-more-btn card-learn-btn"
                     data-read="Learn more about the annual diversity green card lottery drawing"
-                    onclick="showScreen('screen-lottery-details')">Learn More</button>
+                    onclick="showScreen('screen-lottery-details')" data-key="btn_more">Learn More</button>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to immigration menu" onclick="showScreen('screen-learn')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to immigration menu"
+            onclick="showScreen('screen-learn')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- EMERGENCY RIGHTS ------------------------->
@@ -306,27 +341,31 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-emergency')"></i>
         </div>
         <div class="screen-header emergency-header">
-            <h2>Emergency Rights</h2>
+            <h2 data-key="hdr_emergency">Emergency Rights</h2>
         </div>
         <div class="content-body">
             <div class="emergency-card">
-                <h3>🚪 If ICE Comes to Your Door</h3>
-                <p>Do not open the door. Ask if they have a judicial warrant signed by a judge. An administrative
+                <h3 data-key="e1_title">🚪 If ICE Comes to Your Door</h3>
+                <p data-key="e1_body">Do not open the door. Ask if they have a judicial warrant signed by a judge. An
+                    administrative
                     warrant does not give them the right to enter your home.</p>
             </div>
             <div class="emergency-card">
-                <h3>🤐 Right to Remain Silent</h3>
-                <p>You do not have to answer any questions. Clearly say: "I am exercising my right to remain silent."
+                <h3 data-key="e2_title">🤐 Right to Remain Silent</h3>
+                <p data-key="e2_body">You do not have to answer any questions. Clearly say: "I am exercising my right to
+                    remain silent."
                     This applies to everyone regardless of immigration status.</p>
             </div>
             <div class="emergency-card">
-                <h3>⚖️ Right to an Attorney</h3>
-                <p>You have the right to speak with a lawyer. Do not sign any documents before speaking to one. Ask for
+                <h3 data-key="e3_title">⚖️ Right to an Attorney</h3>
+                <p data-key="e3_body">You have the right to speak with a lawyer. Do not sign any documents before
+                    speaking to one. Ask for
                     a free legal aid organization if you cannot afford one.</p>
             </div>
             <div class="emergency-card">
-                <h3>🚗 If Stopped by Police</h3>
-                <p>Stay calm and keep your hands visible. You are not required to answer questions about your
+                <h3 data-key="e4_title">🚗 If Stopped by Police</h3>
+                <p data-key="e4_body">Stay calm and keep your hands visible. You are not required to answer questions
+                    about your
                     immigration status.</p>
             </div>
         </div>
@@ -340,21 +379,24 @@
             <i class="fa-solid fa-volume-high speaker-icon" onclick="speak('screen-offices')"></i>
         </div>
         <div class="screen-header">
-            <h2>Office Locator</h2>
+            <h2 data-key="hdr_offices">Office Locator</h2>
         </div>
         <div class="content-body">
-            <p style="color: var(--text-light); font-size:14px;">Find immigration offices and legal aid organizations
+            <p style="color: var(--text-light); font-size:14px;" data-key="offices_desc">Find immigration offices and
+                legal aid organizations
                 near you.</p>
             <div class="locator-form">
-                <label for="location-input">Your Location</label>
-                <input type="text" id="location-input" placeholder="City, State or ZIP" />
+                <label for="location-input" data-key="location_label">Your Location</label>
+                <input type="text" id="location-input" placeholder="City, State or ZIP"
+                    data-key-placeholder="location_placeholder" />
             </div>
             <div class="map-placeholder">
-                <span>Map coming soon</span>
+                <span data-key="map_soon">Map coming soon</span>
             </div>
         </div>
-        <button class="back-btn" data-read="Go back to the home screen" onclick="showScreen('screen-home')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Go back to the home screen"
+            onclick="showScreen('screen-home')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
 
@@ -366,180 +408,199 @@
     <div class="screen info-page" id="screen-h1b-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-h1b-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">💼</span>
-            <h2>H-1B Specialty Worker</h2>
+        <div class="info-hero">
+            <h2 data-key="h1b_dtitle">H-1B Specialty Worker</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>The H-1B allows U.S. companies to employ foreign workers in tech, engineering, finance, and other
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="h1b_doverview">The H-1B allows U.S. companies to employ foreign workers in tech,
+                    engineering, finance, and other
                     specialty fields.</p>
             </div>
             <div class="phrase-box">
-                <p>"Requires a higher education degree or its equivalent."</p>
+                <p data-key="h1b_dphrase">"Requires a higher education degree or its equivalent."</p>
             </div>
             <div class="info-box">
-                <h4>Key Requirements</h4>
+                <h4 data-key="h1b_dreqhdr">Key Requirements</h4>
                 <ul class="info-list">
-                    <li>A valid job offer from a U.S. company.</li>
-                    <li>A bachelor's degree in your specific field.</li>
-                    <li>Employer must file a Labor Condition Application.</li>
+                    <li data-key="h1b_dreq1">A valid job offer from a U.S. company.</li>
+                    <li data-key="h1b_dreq2">A bachelor's degree in your specific field.</li>
+                    <li data-key="h1b_dreq3">Employer must file a Labor Condition Application.</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to work visa list" onclick="showScreen('screen-work-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to work visa list"
+            onclick="showScreen('screen-work-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- H-2A VISA DETAILS ------------------------->
     <div class="screen info-page" id="screen-h2a-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-h2a-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🚜</span>
-            <h2>H-2A Agricultural Worker</h2>
+        <div class="info-hero">
+            <h2 data-key="h2a_dtitle">H-2A Agricultural Worker</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>The H-2A visa brings foreign nationals to the U.S. to fill temporary or seasonal agricultural jobs
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="h2a_doverview">The H-2A visa brings foreign nationals to the U.S. to fill temporary or
+                    seasonal agricultural jobs
                     where domestic workers are unavailable.</p>
             </div>
             <div class="info-box">
-                <h4>Key Benefits &amp; Rules</h4>
+                <h4 data-key="h2a_dbenhdr">Key Benefits &amp; Rules</h4>
                 <ul class="info-list">
-                    <li>Employer must provide free housing to workers.</li>
-                    <li>Inbound and outbound transportation costs are covered.</li>
-                    <li>Typically valid for up to 1 year (extendable to 3).</li>
+                    <li data-key="h2a_dben1">Employer must provide free housing to workers.</li>
+                    <li data-key="h2a_dben2">Inbound and outbound transportation costs are covered.</li>
+                    <li data-key="h2a_dben3">Typically valid for up to 1 year (extendable to 3).</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to work visa list" onclick="showScreen('screen-work-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to work visa list"
+            onclick="showScreen('screen-work-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- L-1 VISA DETAILS ------------------------->
     <div class="screen info-page" id="screen-l1-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-l1-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🏢</span>
-            <h2>L-1 Intracompany Transfer</h2>
+        <div class="info-hero">
+            <h2 data-key="l1_dtitle">L-1 Intracompany Transfer</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>For international managers, executives, or specialized knowledge employees transferring to a U.S.
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="l1_doverview">For international managers, executives, or specialized knowledge employees
+                    transferring to a U.S.
                     branch of the same company.</p>
             </div>
             <div class="info-box">
-                <h4>Key Requirements</h4>
+                <h4 data-key="l1_dreqhdr">Key Requirements</h4>
                 <ul class="info-list">
-                    <li>Must have worked for the company abroad for at least 1 continuous year within the last 3 years.
+                    <li data-key="l1_dreq1">Must have worked for the company abroad for at least 1 continuous year
+                        within the last 3 years.
                     </li>
-                    <li>L-1A (Managers/Executives) can stay up to 7 years.</li>
-                    <li>L-1B (Specialized Knowledge) can stay up to 5 years.</li>
+                    <li data-key="l1_dreq2">L-1A (Managers/Executives) can stay up to 7 years.</li>
+                    <li data-key="l1_dreq3">L-1B (Specialized Knowledge) can stay up to 5 years.</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to work visa list" onclick="showScreen('screen-work-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to work visa list"
+            onclick="showScreen('screen-work-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- F-1 VISA DETAILS ------------------------->
     <div class="screen info-page" id="screen-f1-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-f1-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🎓</span>
-            <h2>F-1 Academic Student</h2>
+        <div class="info-hero">
+            <h2 data-key="f1_dtitle">F-1 Academic Student</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>The F-1 visa is for international students who want to study full-time at an accredited college or
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="f1_doverview">The F-1 visa is for international students who want to study full-time at an
+                    accredited college or
                     university in the U.S.</p>
             </div>
             <div class="phrase-box">
-                <p>"Must maintain a full course of study."</p>
+                <p data-key="f1_dphrase">"Must maintain a full course of study."</p>
             </div>
             <div class="info-box">
-                <h4>Work &amp; Training</h4>
+                <h4 data-key="f1_dworkhdr">Work &amp; Training</h4>
                 <ul class="info-list">
-                    <li><strong>On-Campus Work:</strong> Up to 20 hours per week while school is in session.</li>
-                    <li><strong>OPT:</strong> Up to 12 months of temporary work in your field after graduation.</li>
+                    <li data-key="f1_dwork1"><strong>On-Campus Work:</strong> Up to 20 hours per week while school is in
+                        session.</li>
+                    <li data-key="f1_dwork2"><strong>OPT:</strong> Up to 12 months of temporary work in your field after
+                        graduation.</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to student visa list" onclick="showScreen('screen-student-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to student visa list"
+            onclick="showScreen('screen-student-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- J-1 VISA DETAILS ------------------------->
     <div class="screen info-page" id="screen-j1-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-j1-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🌍</span>
-            <h2>J-1 Exchange Visitor</h2>
+        <div class="info-hero">
+            <h2 data-key="j1_dtitle">J-1 Exchange Visitor</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>For individuals approved to participate in work-and-study-based exchange visitor programs (interns,
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="j1_doverview">For individuals approved to participate in work-and-study-based exchange
+                    visitor programs (interns,
                     scholars, au pairs, camp counselors).</p>
             </div>
             <div class="info-box">
-                <h4>Important Note</h4>
-                <p>Some J-1 visas include a 2-year home-country physical presence requirement before you can apply to
+                <h4 data-key="j1_dnotehdr">Important Note</h4>
+                <p data-key="j1_dnote">Some J-1 visas include a 2-year home-country physical presence requirement before
+                    you can apply to
                     change your status inside the U.S.</p>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to student visa list" onclick="showScreen('screen-student-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to student visa list"
+            onclick="showScreen('screen-student-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- M-1 VISA DETAILS ------------------------->
     <div class="screen info-page" id="screen-m1-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-m1-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🔧</span>
-            <h2>M-1 Vocational Student</h2>
+        <div class="info-hero">
+            <h2 data-key="m1_dtitle">M-1 Vocational Student</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>For students attending non-academic or vocational programs, such as trade schools, flight academies,
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="m1_doverview">For students attending non-academic or vocational programs, such as trade
+                    schools, flight academies,
                     or technical training courses.</p>
             </div>
             <div class="info-box">
-                <h4>Key Limits</h4>
+                <h4 data-key="m1_dlimhdr">Key Limits</h4>
                 <ul class="info-list">
-                    <li>M-1 students cannot work off-campus during their studies.</li>
-                    <li>Visas are typically issued for the length of the program up to 1 year max.</li>
+                    <li data-key="m1_dlim1">M-1 students cannot work off-campus during their studies.</li>
+                    <li data-key="m1_dlim2">Visas are typically issued for the length of the program up to 1 year max.
+                    </li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to student visa list" onclick="showScreen('screen-student-visa')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to student visa list"
+            onclick="showScreen('screen-student-visa')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- B-2 VISA DETAILS ------------------------->
     <div class="screen info-page" id="screen-b2-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-b2-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🏖️</span>
-            <h2>B-2 Tourist Visa</h2>
+        <div class="info-hero">
+            <h2 data-key="b2_dtitle">B-2 Tourist Visa</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>For travelers entering the U.S. for tourism, vacations, visiting friends or family, and medical
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="b2_doverview">For travelers entering the U.S. for tourism, vacations, visiting friends or
+                    family, and medical
                     treatments.</p>
             </div>
             <div class="info-box">
-                <h4>Stay Duration</h4>
-                <p>Usually grants an entry stay period of up to 6 months per trip, decided by CBP customs officers at
+                <h4 data-key="b2_dstayhdr">Stay Duration</h4>
+                <p data-key="b2_dstay">Usually grants an entry stay period of up to 6 months per trip, decided by CBP
+                    customs officers at
                     the border crossing.</p>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to business and tourist visa list"
+        <button class="back-btn" data-key="btn_back" data-read="Return to business and tourist visa list"
             onclick="showScreen('screen-tourist-visa')"><i class="fa-solid fa-angle-left"
                 style="color: rgb(255, 212, 59);"></i></button>
     </div>
@@ -548,20 +609,22 @@
     <div class="screen info-page" id="screen-b1-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-b1-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">💼</span>
-            <h2>B-1 Business Visitor</h2>
+        <div class="info-hero">
+            <h2 data-key="b1_dtitle">B-1 Business Visitor</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>For short-term business travel to consult with associates, attend legal conventions, negotiate
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="b1_doverview">For short-term business travel to consult with associates, attend legal
+                    conventions, negotiate
                     contracts, or settle estates.</p>
             </div>
             <div class="phrase-box">
-                <p>"Strictly forbids performing local employment or receiving pay from U.S. companies."</p>
+                <p data-key="b1_dphrase">"Strictly forbids performing local employment or receiving pay from U.S.
+                    companies."</p>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to business and tourist visa list"
+        <button class="back-btn" data-key="btn_back" data-read="Return to business and tourist visa list"
             onclick="showScreen('screen-tourist-visa')"><i class="fa-solid fa-angle-left"
                 style="color: rgb(255, 212, 59);"></i></button>
     </div>
@@ -570,25 +633,26 @@
     <div class="screen info-page" id="screen-esta-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-esta-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">✈️</span>
-            <h2>ESTA Visa Waiver</h2>
+        <div class="info-hero">
+            <h2 data-key="esta_dtitle">ESTA Visa Waiver</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>Allows pre-approved citizens from 40+ specific countries to travel to the U.S. for business or
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="esta_doverview">Allows pre-approved citizens from 40+ specific countries to travel to the
+                    U.S. for business or
                     tourism without obtaining a traditional visa.</p>
             </div>
             <div class="info-box">
-                <h4>Key Rules</h4>
+                <h4 data-key="esta_druleshdr">Key Rules</h4>
                 <ul class="info-list">
-                    <li>Maximum stay limit of 90 days per visit.</li>
-                    <li>Strictly non-extendable while inside the country.</li>
-                    <li>Must register online prior to booking travel.</li>
+                    <li data-key="esta_drule1">Maximum stay limit of 90 days per visit.</li>
+                    <li data-key="esta_drule2">Strictly non-extendable while inside the country.</li>
+                    <li data-key="esta_drule3">Must register online prior to booking travel.</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to business and tourist visa list"
+        <button class="back-btn" data-key="btn_back" data-read="Return to business and tourist visa list"
             onclick="showScreen('screen-tourist-visa')"><i class="fa-solid fa-angle-left"
                 style="color: rgb(255, 212, 59);"></i></button>
     </div>
@@ -597,100 +661,114 @@
     <div class="screen info-page" id="screen-family-green-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-family-green-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🏠</span>
-            <h2>Family Green Card</h2>
+        <div class="info-hero">
+            <h2 data-key="family_dtitle">Family Green Card</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>Enables legal permanent residency sponsorship for family members of U.S. citizens and Green Card
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="family_doverview">Enables legal permanent residency sponsorship for family members of U.S.
+                    citizens and Green Card
                     holders.</p>
             </div>
             <div class="info-box">
-                <h4>Categories</h4>
+                <h4 data-key="family_dcathdr">Categories</h4>
                 <ul class="info-list">
-                    <li><strong>Immediate Relatives:</strong> Spouses, minor kids, parents (No yearly limits or queue
+                    <li data-key="family_dcat1"><strong>Immediate Relatives:</strong> Spouses, minor kids, parents (No
+                        yearly limits or queue
                         waitlists).</li>
-                    <li><strong>Preference Families:</strong> Siblings, married or adult children (Subject to annual
+                    <li data-key="family_dcat2"><strong>Preference Families:</strong> Siblings, married or adult
+                        children (Subject to annual
                         lottery limit backlogs).</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to green card list" onclick="showScreen('screen-green')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to green card list"
+            onclick="showScreen('screen-green')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- EMPLOYMENT GREEN CARD DETAILS ------------------------->
     <div class="screen info-page" id="screen-work-green-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-work-green-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🛠️</span>
-            <h2>Employment Green Card</h2>
+        <div class="info-hero">
+            <h2 data-key="workgc_dtitle">Employment Green Card</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>Permanent residency paths based on professional skills, job offers, or business investments inside
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="workgc_doverview">Permanent residency paths based on professional skills, job offers, or
+                    business investments inside
                     the United States.</p>
             </div>
             <div class="info-box">
-                <h4>Tier Tiers (EB-1 to EB-5)</h4>
+                <h4 data-key="workgc_dtierhdr">Tier Tiers (EB-1 to EB-5)</h4>
                 <ul class="info-list">
-                    <li><strong>EB-1:</strong> Extraordinary talents, professors, executives.</li>
-                    <li><strong>EB-2:</strong> Advanced degrees or exceptional professional skills.</li>
-                    <li><strong>EB-3:</strong> Skilled workers and professionals.</li>
-                    <li><strong>EB-5:</strong> Immigrant investors creating local jobs.</li>
+                    <li data-key="workgc_dtier1"><strong>EB-1:</strong> Extraordinary talents, professors, executives.
+                    </li>
+                    <li data-key="workgc_dtier2"><strong>EB-2:</strong> Advanced degrees or exceptional professional
+                        skills.</li>
+                    <li data-key="workgc_dtier3"><strong>EB-3:</strong> Skilled workers and professionals.</li>
+                    <li data-key="workgc_dtier4"><strong>EB-5:</strong> Immigrant investors creating local jobs.</li>
                 </ul>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to green card list" onclick="showScreen('screen-green')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to green card list"
+            onclick="showScreen('screen-green')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- REFUGEE/ASYLEE DETAILS ------------------------->
     <div class="screen info-page" id="screen-refugee-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-refugee-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🛡️</span>
-            <h2>Refugee &amp; Asylee Path</h2>
+        <div class="info-hero">
+            <h2 data-key="refugee_dtitle">Refugee &amp; Asylee Path</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>For individuals seeking legal protection who are unable or afraid to return to their home country due
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="refugee_doverview">For individuals seeking legal protection who are unable or afraid to
+                    return to their home country due
                     to well-founded fear of persecution.</p>
             </div>
             <div class="info-box">
-                <h4>Green Card Rule</h4>
-                <p>Refugees and individuals granted asylum status are legally required or eligible to apply for a Green
+                <h4 data-key="refugee_drulehdr">Green Card Rule</h4>
+                <p data-key="refugee_drule">Refugees and individuals granted asylum status are legally required or
+                    eligible to apply for a Green
                     Card after living continuously in the U.S. for exactly 1 year.</p>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to green card list" onclick="showScreen('screen-green')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to green card list"
+            onclick="showScreen('screen-green')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
     <!------------------------- LOTTERY DETAILS ------------------------->
     <div class="screen info-page" id="screen-lottery-details">
         <div class="phone-header"><i class="fa-solid fa-volume-high speaker-icon"
                 onclick="speak('screen-lottery-details')"></i></div>
-        <div class="info-hero"><span class="info-emoji">🎲</span>
-            <h2>Diversity Visa Lottery</h2>
+        <div class="info-hero">
+            <h2 data-key="lottery_dtitle">Diversity Visa Lottery</h2>
         </div>
         <div class="info-body">
             <div class="info-box">
-                <h4>Overview</h4>
-                <p>An official annual computer-generated random drawing program that awards up to 55,000 permanent
+                <h4 data-key="overview">Overview</h4>
+                <p data-key="lottery_doverview">An official annual computer-generated random drawing program that awards
+                    up to 55,000 permanent
                     resident visas each year.</p>
             </div>
             <div class="info-box">
-                <h4>Eligibility</h4>
-                <p>Open only to natives of countries with historically low rates of immigration to the United States.
+                <h4 data-key="lottery_delighdr">Eligibility</h4>
+                <p data-key="lottery_delig">Open only to natives of countries with historically low rates of immigration
+                    to the United States.
                     Requires a high school education or equivalent work history to claim.</p>
             </div>
         </div>
-        <button class="back-btn" data-read="Return to green card list" onclick="showScreen('screen-green')"><i
-                class="fa-solid fa-angle-left" style="color: rgb(255, 212, 59);"></i></button>
+        <button class="back-btn" data-key="btn_back" data-read="Return to green card list"
+            onclick="showScreen('screen-green')"><i class="fa-solid fa-angle-left"
+                style="color: rgb(255, 212, 59);"></i></button>
     </div>
 
 
