@@ -29,6 +29,7 @@ body.switch {
     max-width: 1200px;
     margin: 1em auto;
     min-height: 750px;
+    position: relative;
 }
 
 header {
@@ -101,9 +102,9 @@ section a {
     padding: 5px;
     color: #D9D9D9;
     text-align: center;
-    background-color:#608567 ;
+    background-color: #608567;
     font-family: Inter;
-    font-weight:normal;
+    font-weight: normal;
 }
 
 section a:hover {
@@ -145,9 +146,10 @@ section.switch a:hover {
 /* ---------------------------- Button Styling ---------------------------- */
 
 button {
-    position: fixed;
+    position: absolute;
     top: 45px;
-    left: 203px; /*left side (day/sun) */
+    left: 175px;
+    /*left side (day/sun) */
     padding: 12px;
     border-radius: 100%;
     background-color: orange;
@@ -156,13 +158,15 @@ button {
     z-index: 10;
     width: 65px;
     height: 65px;
-    transition: left 2s, background-color 2s; /*  transition left and smooth slide */
+    transition: left 2s, background-color 2s;
+    /*  transition left and smooth slide */
     cursor: pointer;
     font-size: 30px;
 }
 
 button.switch {
-    left: calc(100% - 268px); /* nightslides to right side (moon) */
+    left: calc(100% - 239px);
+    /* nightslides to right side (moon) */
     background-color: rgb(235, 235, 235);
 
 }
