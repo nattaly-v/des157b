@@ -34,14 +34,7 @@ function showScreen(screenId) {
         target.scrollTop = 0;
         window.scrollTo(0, 0);
     }
-    if (window.responsiveVoice) responsiveVoice.cancel();
-
-    // Reset all playing card/page audio buttons
-    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
-        b.classList.remove('playing');
-        updateAudioIcon(b, false);
-    });
-
+    stopActiveAudio();
     updateNavHighlight(screenId);
 }
 
@@ -63,27 +56,34 @@ function updateAudioIcon(btn, isPlaying) {
 }
 
 
+// ===================== AUDIO STATE TRACKER =====================
+// Tracks which button is currently playing — don't rely on responsiveVoice.isPlaying()
+let activeAudioBtn = null;
+
+function stopActiveAudio() {
+    if (window.responsiveVoice) responsiveVoice.cancel();
+    if (activeAudioBtn) {
+        activeAudioBtn.classList.remove('playing');
+        updateAudioIcon(activeAudioBtn, false);
+        activeAudioBtn = null;
+    }
+}
+
+
 // ===================== SPEAK A CARD =====================
 function speakCard(btn) {
     if (!window.responsiveVoice) return;
 
-    // Always allow stopping, even if muted
-    if (responsiveVoice.isPlaying()) {
-        responsiveVoice.cancel();
-        if (btn.classList.contains('playing')) {
-            btn.classList.remove('playing');
-            updateAudioIcon(btn, false);
-            return;
-        }
+    // If this button is already playing, stop it
+    if (activeAudioBtn === btn) {
+        stopActiveAudio();
+        return;
     }
 
-    // Don't start new speech if muted
-    if (isMuted) return;
+    // Stop whatever else is playing
+    stopActiveAudio();
 
-    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
-        b.classList.remove('playing');
-        updateAudioIcon(b, false);
-    });
+    if (isMuted) return;
 
     const card = btn.closest('.visa-card') || btn.closest('.emergency-card');
     if (!card) return;
@@ -95,13 +95,14 @@ function speakCard(btn) {
     });
     if (!text) return;
 
+    activeAudioBtn = btn;
     btn.classList.add('playing');
     updateAudioIcon(btn, true);
 
     const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
     responsiveVoice.speak(text, voice, {
-        onend: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); },
-        onerror: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); }
+        onend: () => { if (activeAudioBtn === btn) stopActiveAudio(); },
+        onerror: () => { if (activeAudioBtn === btn) stopActiveAudio(); }
     });
 }
 
@@ -110,44 +111,36 @@ function speakCard(btn) {
 function speakInfoPage(btn) {
     if (!window.responsiveVoice) return;
 
-    // Always allow stopping, even if muted
-    if (responsiveVoice.isPlaying()) {
-        responsiveVoice.cancel();
-        if (btn.classList.contains('playing')) {
-            btn.classList.remove('playing');
-            updateAudioIcon(btn, false);
-            return;
-        }
+    // If this button is already playing, stop it
+    if (activeAudioBtn === btn) {
+        stopActiveAudio();
+        return;
     }
 
-    // Don't start new speech if muted
+    // Stop whatever else is playing
+    stopActiveAudio();
+
     if (isMuted) return;
 
-    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
-        b.classList.remove('playing');
-        updateAudioIcon(b, false);
-    });
-
-    // Read the entire info page: title + all boxes
     const screen = btn.closest('.screen');
     if (!screen) return;
 
     let text = '';
     screen.querySelectorAll('h2, h4, p, li').forEach(el => {
-        // Skip the button's own label text
         if (el.closest('.page-audio-btn')) return;
         const t = el.innerText.trim();
         if (t) text += t + '. ';
     });
     if (!text) return;
 
+    activeAudioBtn = btn;
     btn.classList.add('playing');
     updateAudioIcon(btn, true);
 
     const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
     responsiveVoice.speak(text, voice, {
-        onend: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); },
-        onerror: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); }
+        onend: () => { if (activeAudioBtn === btn) stopActiveAudio(); },
+        onerror: () => { if (activeAudioBtn === btn) stopActiveAudio(); }
     });
 }
 
@@ -171,12 +164,7 @@ async function loadTranslations() {
 
 function applyLanguage(lang) {
     currentLang = lang;
-
-    if (window.responsiveVoice) responsiveVoice.cancel();
-    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
-        b.classList.remove('playing');
-        updateAudioIcon(b, false);
-    });
+    stopActiveAudio();
 
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
@@ -279,12 +267,7 @@ let isMuted = false;
 
 function toggleMute() {
     isMuted = !isMuted;
-    if (window.responsiveVoice) responsiveVoice.cancel();
-
-    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
-        b.classList.remove('playing');
-        updateAudioIcon(b, false);
-    });
+    stopActiveAudio();
 
     // Update ALL injected nav mute buttons (one per screen) by class
     document.querySelectorAll('.bnav-audio-toggle').forEach(muteBtn => {
