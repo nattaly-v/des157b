@@ -1,3 +1,30 @@
+// ===================== SCREEN NAV SECTION MAP =====================
+// Maps each screen ID to which bottom nav section it belongs to
+const screenSectionMap = {
+    'screen-home': 'home',
+    'screen-learn': 'learn',
+    'screen-visa': 'learn',
+    'screen-work-visa': 'learn',
+    'screen-student-visa': 'learn',
+    'screen-tourist-visa': 'learn',
+    'screen-green': 'learn',
+    'screen-h1b-details': 'learn',
+    'screen-h2a-details': 'learn',
+    'screen-l1-details': 'learn',
+    'screen-f1-details': 'learn',
+    'screen-j1-details': 'learn',
+    'screen-m1-details': 'learn',
+    'screen-b2-details': 'learn',
+    'screen-b1-details': 'learn',
+    'screen-esta-details': 'learn',
+    'screen-family-green-details': 'learn',
+    'screen-work-green-details': 'learn',
+    'screen-refugee-details': 'learn',
+    'screen-lottery-details': 'learn',
+    'screen-emergency': 'emergency',
+    'screen-offices': 'offices',
+};
+
 // ===================== SCREEN NAVIGATION =====================
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -8,23 +35,112 @@ function showScreen(screenId) {
         window.scrollTo(0, 0);
     }
     if (window.responsiveVoice) responsiveVoice.cancel();
+
+    // Reset all playing card/page audio buttons
+    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
+        b.classList.remove('playing');
+        updateAudioIcon(b, false);
+    });
+
+    updateNavHighlight(screenId);
+}
+
+// ===================== NAV HIGHLIGHT =====================
+function updateNavHighlight(screenId) {
+    const section = screenSectionMap[screenId] || null;
+    document.querySelectorAll('.bnav-btn[data-section]').forEach(btn => {
+        const isActive = btn.dataset.section === section;
+        btn.classList.toggle('bnav-active', isActive);
+    });
 }
 
 
-// ===================== TEXT TO SPEECH =====================
-function speak(screenId) {
+// ===================== AUDIO ICON HELPER =====================
+function updateAudioIcon(btn, isPlaying) {
+    const icon = btn.querySelector('i');
+    if (!icon) return;
+    icon.className = isPlaying ? 'fa-solid fa-circle-stop' : 'fa-solid fa-volume-high';
+}
+
+
+// ===================== SPEAK A CARD =====================
+function speakCard(btn) {
     if (!window.responsiveVoice || isMuted) return;
+
     if (responsiveVoice.isPlaying()) {
         responsiveVoice.cancel();
-        return;
+        if (btn.classList.contains('playing')) {
+            btn.classList.remove('playing');
+            updateAudioIcon(btn, false);
+            return;
+        }
     }
-    const screen = document.getElementById(screenId);
-    let text = '';
-    screen.querySelectorAll('h1, h2, h3, h4, p, li').forEach(el => {
-        text += el.innerText.trim() + '. ';
+
+    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
+        b.classList.remove('playing');
+        updateAudioIcon(b, false);
     });
+
+    const card = btn.closest('.visa-card') || btn.closest('.emergency-card');
+    if (!card) return;
+
+    let text = '';
+    card.querySelectorAll('h3, p').forEach(el => {
+        const t = el.innerText.trim();
+        if (t) text += t + '. ';
+    });
+    if (!text) return;
+
+    btn.classList.add('playing');
+    updateAudioIcon(btn, true);
+
     const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
-    responsiveVoice.speak(text, voice);
+    responsiveVoice.speak(text, voice, {
+        onend: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); },
+        onerror: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); }
+    });
+}
+
+
+// ===================== SPEAK AN INFO PAGE =====================
+function speakInfoPage(btn) {
+    if (!window.responsiveVoice || isMuted) return;
+
+    if (responsiveVoice.isPlaying()) {
+        responsiveVoice.cancel();
+        if (btn.classList.contains('playing')) {
+            btn.classList.remove('playing');
+            updateAudioIcon(btn, false);
+            return;
+        }
+    }
+
+    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
+        b.classList.remove('playing');
+        updateAudioIcon(b, false);
+    });
+
+    // Read the entire info page: title + all boxes
+    const screen = btn.closest('.screen');
+    if (!screen) return;
+
+    let text = '';
+    screen.querySelectorAll('h2, h4, p, li').forEach(el => {
+        // Skip the button's own label text
+        if (el.closest('.page-audio-btn')) return;
+        const t = el.innerText.trim();
+        if (t) text += t + '. ';
+    });
+    if (!text) return;
+
+    btn.classList.add('playing');
+    updateAudioIcon(btn, true);
+
+    const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
+    responsiveVoice.speak(text, voice, {
+        onend: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); },
+        onerror: () => { btn.classList.remove('playing'); updateAudioIcon(btn, false); }
+    });
 }
 
 
@@ -32,7 +148,6 @@ function speak(screenId) {
 let translations = {};
 let currentLang = 'en';
 
-// loads both json files
 async function loadTranslations() {
     try {
         const [en, es] = await Promise.all([
@@ -40,19 +155,21 @@ async function loadTranslations() {
             fetch('es.json').then(r => r.json())
         ]);
         translations = { en, es };
-        applyLanguage('en'); // always start in English
+        applyLanguage('en');
     } catch (err) {
         console.error('Failed to load translations:', err);
     }
 }
 
-// swaps all text and voice to the selected language
 function applyLanguage(lang) {
     currentLang = lang;
 
     if (window.responsiveVoice) responsiveVoice.cancel();
+    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
+        b.classList.remove('playing');
+        updateAudioIcon(b, false);
+    });
 
-    // swap text content for every element with a data-key
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (translations[lang] && translations[lang][key] !== undefined) {
@@ -60,7 +177,6 @@ function applyLanguage(lang) {
         }
     });
 
-    // swap placeholder text for inputs
     document.querySelectorAll('[data-key-placeholder]').forEach(el => {
         const key = el.getAttribute('data-key-placeholder');
         if (translations[lang] && translations[lang][key]) {
@@ -68,7 +184,6 @@ function applyLanguage(lang) {
         }
     });
 
-    // update data-read so hover voice speaks the correct language
     document.querySelectorAll('button[data-key]').forEach(btn => {
         const key = btn.getAttribute('data-key');
         if (translations[lang] && translations[lang][key]) {
@@ -76,50 +191,42 @@ function applyLanguage(lang) {
         }
     });
 
-    // highlight the active language button
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 }
 
 
-// ===================== HOVER / LONG PRESS TO AUDIO =====================
+// ===================== HOVER / LONG PRESS (nav buttons) =====================
 function initHoverVoice() {
     let longPressTimer = null;
 
     document.querySelectorAll('button[data-read]').forEach(button => {
+        if (button.classList.contains('card-audio-btn') || button.classList.contains('page-audio-btn')) return;
 
-        // DESKTOP — mouse hover
-        button.addEventListener('mouseenter', () => {
-            if (!window.responsiveVoice || isMuted) return;
-            responsiveVoice.cancel();
-            const phrase = button.getAttribute('data-read');
-            const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
-            responsiveVoice.speak(phrase, voice);
-        });
-
-        button.addEventListener('mouseleave', () => {
-            if (window.responsiveVoice) responsiveVoice.cancel();
-        });
-
-        // MOBILE — long press (hold for 600ms)
-        button.addEventListener('touchstart', () => {
+        button.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // blocks text selection, magnifier, and copy/paste popup
             longPressTimer = setTimeout(() => {
                 if (!window.responsiveVoice || isMuted) return;
                 responsiveVoice.cancel();
-                const phrase = button.getAttribute('data-read');
                 const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
-                responsiveVoice.speak(phrase, voice);
+                responsiveVoice.speak(button.getAttribute('data-read'), voice);
             }, 600);
-        }, { passive: true });
+        }, { passive: false });
+        button.addEventListener('touchend', () => clearTimeout(longPressTimer), { passive: true });
+        button.addEventListener('touchmove', () => clearTimeout(longPressTimer), { passive: true });
+    });
 
-        button.addEventListener('touchend', () => {
-            clearTimeout(longPressTimer);
-        }, { passive: true });
+    // Card audio buttons — tap to speak
+    document.querySelectorAll('.card-audio-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.stopPropagation(); speakCard(btn); });
+        btn.addEventListener('touchend', (e) => { e.preventDefault(); e.stopPropagation(); speakCard(btn); }, { passive: false });
+    });
 
-        button.addEventListener('touchmove', () => {
-            clearTimeout(longPressTimer);
-        }, { passive: true });
+    // Info page audio buttons — tap to speak
+    document.querySelectorAll('.page-audio-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.stopPropagation(); speakInfoPage(btn); });
+        btn.addEventListener('touchend', (e) => { e.preventDefault(); e.stopPropagation(); speakInfoPage(btn); }, { passive: false });
     });
 }
 
@@ -137,12 +244,33 @@ let isMuted = false;
 function toggleMute() {
     isMuted = !isMuted;
     if (window.responsiveVoice) responsiveVoice.cancel();
+
+    document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
+        b.classList.remove('playing');
+        updateAudioIcon(b, false);
+    });
+
+    const muteBtn = document.getElementById('mute-btn');
     const icon = document.getElementById('mute-icon');
-    if (icon) {
-        icon.className = isMuted
-            ? 'fa-solid fa-volume-xmark'
-            : 'fa-solid fa-volume-high';
-    }
+    const label = document.getElementById('mute-label');
+
+    if (icon) icon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+    if (label) label.textContent = isMuted ? 'Audio Off' : 'Audio On';
+    if (muteBtn) muteBtn.classList.toggle('muted', isMuted);
+}
+
+
+// ===================== INJECT INFO PAGE AUDIO BUTTONS =====================
+function injectInfoPageAudioButtons() {
+    document.querySelectorAll('.screen.info-page').forEach(page => {
+        const hero = page.querySelector('.info-hero');
+        if (!hero) return;
+        const btn = document.createElement('button');
+        btn.className = 'page-audio-btn';
+        btn.setAttribute('aria-label', 'Listen to this page');
+        btn.innerHTML = '<i class="fa-solid fa-volume-high"></i><span class="page-audio-label">Listen</span>';
+        hero.appendChild(btn);
+    });
 }
 
 
@@ -150,20 +278,21 @@ function toggleMute() {
 function injectBottomNav() {
     const navHTML = `
         <nav class="bottom-nav">
-            <button class="bnav-btn" onclick="showScreen('screen-home')">
+            <button class="bnav-btn" data-section="home" onclick="showScreen('screen-home')" aria-label="Home">
                 <i class="fa-solid fa-house"></i>
             </button>
-            <button class="bnav-btn" onclick="showScreen('screen-learn')">
+            <button class="bnav-btn" data-section="learn" onclick="showScreen('screen-learn')" aria-label="Learn">
                 <i class="fa-solid fa-book-open"></i>
             </button>
-            <button class="bnav-btn bnav-center" onclick="showScreen('screen-emergency')">
+            <button class="bnav-btn bnav-center" data-section="emergency" onclick="showScreen('screen-emergency')" aria-label="Emergency">
                 <i class="fa-solid fa-bell"></i>
             </button>
-            <button class="bnav-btn" onclick="showScreen('screen-offices')">
+            <button class="bnav-btn" data-section="offices" onclick="showScreen('screen-offices')" aria-label="Offices">
                 <i class="fa-solid fa-location-dot"></i>
             </button>
-            <button class="bnav-btn" onclick="toggleMute()">
+            <button class="bnav-btn bnav-audio-toggle" id="mute-btn" onclick="toggleMute()" aria-label="Toggle audio">
                 <i class="fa-solid fa-volume-high" id="mute-icon"></i>
+                <span class="mute-label" id="mute-label">Audio On</span>
             </button>
         </nav>
     `;
@@ -171,6 +300,7 @@ function injectBottomNav() {
         screen.insertAdjacentHTML('beforeend', navHTML);
     });
 }
+
 
 // ===================== INJECT LANG TOGGLE =====================
 function injectLangToggle() {
@@ -186,10 +316,16 @@ function injectLangToggle() {
     });
 }
 
+
+// ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
+    injectInfoPageAudioButtons();
     injectBottomNav();
     injectLangToggle();
     loadTranslations();
+
+    // Set initial nav highlight for home screen
+    updateNavHighlight('screen-home');
 
     if (window.responsiveVoice && responsiveVoice.speak) {
         initHoverVoice();

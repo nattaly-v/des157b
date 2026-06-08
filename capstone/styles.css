@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+button {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    /* blocks the iOS popup menu on long press */
+}
+
 :root {
     --navy: #1A3A5F;
     --dark-navy: #2C5E94;
@@ -33,7 +40,7 @@ body {
     border: 1px solid var(--dark-navy);
     border-radius: 20px;
     padding: 4px 12px;
-    margin-left: 230px;
+    margin-left: auto;
 }
 
 .lang-btn {
@@ -62,8 +69,9 @@ body {
 /* ----------------------- SCREEN ----------------------- */
 .screen {
     display: none;
-    width: 390px;
-    height: 844px;
+    width: min(390px, 100vw);
+    min-height: min(844px, 100dvh);
+    height: min(844px, 100dvh);
     background-color: var(--navy);
     border-radius: 20px;
     /* padding: 20px; */
@@ -112,7 +120,7 @@ body {
     border: none;
     border-radius: 8px;
     padding: 14px 20px;
-    width: 299px;
+    width: min(299px, 80%);
     height: 62px;
     font-size: 20px;
     font-weight: bold;
@@ -177,7 +185,7 @@ body {
 }
 
 .learn-nav-img {
-    width: 299px;
+    width: min(299px, 85%);
     height: 160px;
     object-fit: cover;
     border-radius: 12px;
@@ -364,7 +372,7 @@ body {
     border: none;
     border-radius: 8px;
     padding: 14px 20px;
-    width: 299px;
+    width: min(299px, 80%);
     height: 62px;
     font-size: 16px;
     font-weight: 600;
@@ -496,7 +504,7 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 15px;
     height: fit-content;
-    width: 300px;
+    width: min(300px, 100%);
     margin: auto;
     border-radius: 12px;
     flex-shrink: 0;
@@ -523,8 +531,9 @@ body {
     /* border-radius: 6px; */
     padding: 23px 20px;
     text-align: center;
-    width: 300px;
-    height: 100px;
+    width: min(300px, 100%);
+    min-height: 100px;
+    height: auto;
     /* align-content: center; */
 }
 
@@ -561,15 +570,88 @@ body {
 }
 
 /* ----------------------- RESPONSIVE ----------------------- */
+
+/* Full-bleed on any phone viewport */
 @media (max-width: 420px) {
     body {
         padding: 0;
         gap: 0;
+        align-items: flex-start;
     }
 
     .screen {
         border-radius: 0;
-        max-width: 100%;
+        width: 100vw;
+        min-height: 100dvh;
+        height: 100dvh;
+    }
+
+    /* Slightly tighten large titles on very narrow screens */
+    .app-title {
+        font-size: clamp(28px, 9vw, 42px);
+        margin: 30px 20px;
+    }
+
+    .screen-header h2 {
+        font-size: clamp(24px, 8vw, 36px);
+        margin: 20px 16px 16px;
+    }
+
+    /* Buttons stretch to fill available width */
+    .nav-btn,
+    .visa-type-btn {
+        width: 85%;
+        font-size: clamp(15px, 4.5vw, 20px);
+    }
+
+    /* Tighten vertical gaps so content fits on small screens */
+    .home-nav {
+        gap: 24px;
+    }
+
+    .visa-buttons {
+        gap: 28px;
+    }
+
+    /* Emergency button: scale proportionally */
+    .emergency-btn {
+        width: clamp(140px, 50vw, 200px);
+        height: clamp(140px, 50vw, 200px);
+        font-size: clamp(16px, 5vw, 24px);
+        margin: 32px auto 16px;
+    }
+
+    /* Content padding */
+    .content-body {
+        margin: 0 16px;
+    }
+
+    .info-body {
+        padding: 0 16px;
+    }
+
+    /* Learn images fill width */
+    .learn-nav-img {
+        width: 90%;
+    }
+
+    /* Carousel fits viewport */
+    .carousel-slide {
+        height: auto;
+        min-height: 320px;
+        padding: 20px 14px 14px;
+    }
+
+    /* Bottom nav safe area for iPhone home indicator */
+    .bottom-nav {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        height: calc(64px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Phone header tighten */
+    .phone-header {
+        margin: 20px 16px 12px;
+        font-size: 20px;
     }
 }
 
@@ -699,10 +781,10 @@ body {
     /* border-radius: 0 0 20px 20px; */
     /* flex-shrink: 0; */
     margin-top: auto;
-    margin-left: -40px;
+    margin-left: 0;
     margin-right: 0;
-    padding: 0 18px 0px 57px;
-    width: calc(100% + 40px);
+    padding: 0 18px;
+    width: 100%;
 }
 
 .bnav-btn {
@@ -740,4 +822,192 @@ body {
     background-color: #b71c1c;
     color: var(--white);
     transform: translateY(-4px);
+}
+
+/* ----------------------- CARD AUDIO BUTTON ----------------------- */
+.card-audio-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(249, 115, 22, 0.15);
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    border-radius: 50px;
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 8px auto 4px auto;
+    transition: background-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+    flex-shrink: 0;
+    /* Large tap target for elderly users */
+    min-width: 54px;
+    min-height: 54px;
+}
+
+.card-audio-btn:hover,
+.card-audio-btn:active {
+    background-color: var(--orange);
+    color: var(--white);
+    transform: scale(1.08);
+}
+
+.card-audio-btn.playing {
+    background-color: var(--orange);
+    color: var(--white);
+    animation: pulse-ring 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55);
+    }
+
+    60% {
+        box-shadow: 0 0 0 12px rgba(249, 115, 22, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+    }
+}
+
+/* Emergency card audio btn variant */
+.emergency-audio-btn {
+    background-color: rgba(229, 57, 53, 0.15);
+    border-color: #e53935;
+    color: #e53935;
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+.emergency-audio-btn:hover,
+.emergency-audio-btn:active {
+    background-color: #e53935;
+    color: var(--white);
+}
+
+.emergency-audio-btn.playing {
+    background-color: #e53935;
+    color: var(--white);
+    animation: pulse-ring-red 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-ring-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.55);
+    }
+
+    60% {
+        box-shadow: 0 0 0 12px rgba(229, 57, 53, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+    }
+}
+
+/* ----------------------- MUTE BUTTON (AUDIO TOGGLE IN NAV) ----------------------- */
+.bnav-audio-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.bnav-audio-toggle .mute-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--yellow);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.bnav-audio-toggle.muted {
+    color: #6b7280;
+}
+
+.bnav-audio-toggle.muted .mute-label {
+    color: #6b7280;
+}
+
+.bnav-audio-toggle.muted #mute-icon {
+    color: #6b7280;
+}
+
+/* ----------------------- INFO PAGE AUDIO BUTTON ----------------------- */
+.page-audio-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(249, 115, 22, 0.15);
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    border-radius: 50px;
+    padding: 12px 28px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 14px auto 4px auto;
+    min-height: 54px;
+    transition: background-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+    letter-spacing: 0.02em;
+}
+
+.page-audio-btn .page-audio-label {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.page-audio-btn:hover,
+.page-audio-btn:active {
+    background-color: var(--orange);
+    color: var(--white);
+    transform: scale(1.04);
+}
+
+.page-audio-btn.playing {
+    background-color: var(--orange);
+    color: var(--white);
+    animation: pulse-ring 1.4s ease-in-out infinite;
+}
+
+/* ----------------------- NAV ACTIVE STATE ----------------------- */
+.bnav-btn.bnav-active {
+    color: var(--yellow);
+    position: relative;
+}
+
+/* Glowing dot indicator above active icon */
+.bnav-btn.bnav-active::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--yellow);
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px var(--yellow);
+}
+
+/* Emergency center button active — use white dot since it's already colored */
+.bnav-center.bnav-active {
+    background-color: #ff1a1a;
+    transform: translateY(-4px) scale(1.05);
+}
+
+.bnav-center.bnav-active::after {
+    background-color: var(--white);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    top: 6px;
 }
