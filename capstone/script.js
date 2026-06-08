@@ -205,14 +205,18 @@ function initHoverVoice() {
         if (button.classList.contains('card-audio-btn') || button.classList.contains('page-audio-btn')) return;
 
         button.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // blocks text selection, magnifier, and copy/paste popup
+            // Do NOT call e.preventDefault() here — it suppresses the
+            // synthetic click on iOS Safari, breaking all button navigation.
+            let didLongPress = false;
             longPressTimer = setTimeout(() => {
+                didLongPress = true;
                 if (!window.responsiveVoice || isMuted) return;
                 responsiveVoice.cancel();
                 const voice = currentLang === 'es' ? 'Spanish Latin American Female' : 'US English Female';
                 responsiveVoice.speak(button.getAttribute('data-read'), voice);
             }, 600);
-        }, { passive: false });
+            button._didLongPress = () => didLongPress;
+        }, { passive: true });
         button.addEventListener('touchend', () => clearTimeout(longPressTimer), { passive: true });
         button.addEventListener('touchmove', () => clearTimeout(longPressTimer), { passive: true });
     });
