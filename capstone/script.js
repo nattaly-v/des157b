@@ -65,8 +65,9 @@ function updateAudioIcon(btn, isPlaying) {
 
 // ===================== SPEAK A CARD =====================
 function speakCard(btn) {
-    if (!window.responsiveVoice || isMuted) return;
+    if (!window.responsiveVoice) return;
 
+    // Always allow stopping, even if muted
     if (responsiveVoice.isPlaying()) {
         responsiveVoice.cancel();
         if (btn.classList.contains('playing')) {
@@ -75,6 +76,9 @@ function speakCard(btn) {
             return;
         }
     }
+
+    // Don't start new speech if muted
+    if (isMuted) return;
 
     document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
         b.classList.remove('playing');
@@ -104,8 +108,9 @@ function speakCard(btn) {
 
 // ===================== SPEAK AN INFO PAGE =====================
 function speakInfoPage(btn) {
-    if (!window.responsiveVoice || isMuted) return;
+    if (!window.responsiveVoice) return;
 
+    // Always allow stopping, even if muted
     if (responsiveVoice.isPlaying()) {
         responsiveVoice.cancel();
         if (btn.classList.contains('playing')) {
@@ -114,6 +119,9 @@ function speakInfoPage(btn) {
             return;
         }
     }
+
+    // Don't start new speech if muted
+    if (isMuted) return;
 
     document.querySelectorAll('.card-audio-btn.playing, .page-audio-btn.playing').forEach(b => {
         b.classList.remove('playing');
@@ -222,15 +230,39 @@ function initHoverVoice() {
     });
 
     // Card audio buttons — tap to speak
+    // touchend + preventDefault blocks the synthetic click on mobile, avoiding double-fire.
+    // The click listener only runs on true mouse clicks (no prior touch).
     document.querySelectorAll('.card-audio-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => { e.stopPropagation(); speakCard(btn); });
-        btn.addEventListener('touchend', (e) => { e.preventDefault(); e.stopPropagation(); speakCard(btn); }, { passive: false });
+        let touchFired = false;
+        btn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            touchFired = true;
+            speakCard(btn);
+            setTimeout(() => { touchFired = false; }, 500);
+        }, { passive: false });
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (touchFired) return;
+            speakCard(btn);
+        });
     });
 
     // Info page audio buttons — tap to speak
     document.querySelectorAll('.page-audio-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => { e.stopPropagation(); speakInfoPage(btn); });
-        btn.addEventListener('touchend', (e) => { e.preventDefault(); e.stopPropagation(); speakInfoPage(btn); }, { passive: false });
+        let touchFired = false;
+        btn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            touchFired = true;
+            speakInfoPage(btn);
+            setTimeout(() => { touchFired = false; }, 500);
+        }, { passive: false });
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (touchFired) return;
+            speakInfoPage(btn);
+        });
     });
 }
 
@@ -254,13 +286,14 @@ function toggleMute() {
         updateAudioIcon(b, false);
     });
 
-    const muteBtn = document.getElementById('mute-btn');
-    const icon = document.getElementById('mute-icon');
-    const label = document.getElementById('mute-label');
-
-    if (icon) icon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
-    if (label) label.textContent = isMuted ? 'Audio Off' : 'Audio On';
-    if (muteBtn) muteBtn.classList.toggle('muted', isMuted);
+    // Update ALL injected nav mute buttons (one per screen) by class
+    document.querySelectorAll('.bnav-audio-toggle').forEach(muteBtn => {
+        const icon = muteBtn.querySelector('.mute-icon');
+        const label = muteBtn.querySelector('.mute-label');
+        if (icon) icon.className = isMuted ? 'fa-solid fa-volume-xmark mute-icon' : 'fa-solid fa-volume-high mute-icon';
+        if (label) label.textContent = isMuted ? 'Audio Off' : 'Audio On';
+        muteBtn.classList.toggle('muted', isMuted);
+    });
 }
 
 
@@ -294,9 +327,9 @@ function injectBottomNav() {
             <button class="bnav-btn" data-section="offices" onclick="showScreen('screen-offices')" aria-label="Offices">
                 <i class="fa-solid fa-location-dot"></i>
             </button>
-            <button class="bnav-btn bnav-audio-toggle" id="mute-btn" onclick="toggleMute()" aria-label="Toggle audio">
-                <i class="fa-solid fa-volume-high" id="mute-icon"></i>
-                <span class="mute-label" id="mute-label">Audio On</span>
+            <button class="bnav-btn bnav-audio-toggle" onclick="toggleMute()" aria-label="Toggle audio">
+                <i class="fa-solid fa-volume-high mute-icon"></i>
+                <span class="mute-label">Audio On</span>
             </button>
         </nav>
     `;
