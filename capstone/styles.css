@@ -25,10 +25,11 @@ body {
     background-color: #2d2d2d;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    align-items: flex-start;
+    min-height: 100dvh;
+    padding: 0;
     font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 /* ----------------------- LANGUAGE TOGGLE ----------------------- */
@@ -69,18 +70,23 @@ body {
 /* ----------------------- SCREEN ----------------------- */
 .screen {
     display: none;
-    width: min(390px, 100vw);
-    min-height: min(844px, 100dvh);
-    height: min(844px, 100dvh);
+    width: 100vw;
+    max-width: 430px;
+    min-height: 100dvh;
+    height: 100dvh;
     background-color: var(--navy);
-    border-radius: 20px;
-    /* padding: 20px; */
+    border-radius: 0;
     color: var(--white);
     flex-direction: column;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: none;
     overflow-y: auto;
-    /* flex-shrink: 0; */
+    overflow-x: hidden;
     position: relative;
+    /* Safe area for Dynamic Island + home indicator */
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
 }
 
 .screen.active {
@@ -571,8 +577,8 @@ body {
 
 /* ----------------------- RESPONSIVE ----------------------- */
 
-/* Full-bleed on any phone viewport */
-@media (max-width: 420px) {
+/* Full-bleed on any phone viewport narrower than 430px */
+@media (max-width: 429px) {
     body {
         padding: 0;
         gap: 0;
@@ -640,12 +646,6 @@ body {
         height: auto;
         min-height: 320px;
         padding: 20px 14px 14px;
-    }
-
-    /* Bottom nav safe area for iPhone home indicator */
-    .bottom-nav {
-        padding-bottom: env(safe-area-inset-bottom, 0px);
-        height: calc(64px + env(safe-area-inset-bottom, 0px));
     }
 
     /* Phone header tighten */
@@ -771,20 +771,20 @@ body {
 /* ----------------------- BOTTOM NAV ----------------------- */
 .bottom-nav {
     position: sticky;
-    bottom: auto;
-    height: 64px;
+    bottom: 0;
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
     background-color: #0f2540;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    /* border-radius: 0 0 20px 20px; */
-    /* flex-shrink: 0; */
     margin-top: auto;
     margin-left: 0;
     margin-right: 0;
     padding: 0 18px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     width: 100%;
+    flex-shrink: 0;
 }
 
 .bnav-btn {
